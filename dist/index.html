@@ -62,11 +62,12 @@
             </div>
         </div>
         <div class="p-5 mb-4 bg-light rounded-3">
-            about us
+            <a href="https://aditya-chandraker.me/">adi</a>
         </div>
         <div class="row align-items-md-stretch mb-4 ">
-            <div class="col-md-3">
-                <div class="h-100 p-5 text-white bg-dark">
+            <div class="col-md-3" id="clicker-container">
+                <div class="text-white">
+                    <canvas id="clicker-canvas"></canvas>
                 </div>
             </div>
             <div class="col-md-9">
@@ -80,9 +81,9 @@
             </div>
         </div>
         <div class="row align-items-md-stretch mb-4 ">
-            <div class="col-md-3">
-                <div class="text-white bg-dark laundry_container">
-                    <canvas class="webgl"></canvas>
+            <div class="col-md-3" id="laundry-container">
+                <div class="text-white">
+                    <canvas id="laundry-canvas"></canvas>
                 </div>
             </div>
             <div class="col-md-9">
@@ -115,8 +116,9 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <!-- Scroll JS-->
     <script src="js/scroll.js"></script>
-    <!-- Core theme JS-->
+    <!-- Three JS files-->
     <script type="module" src="js/laundry.js"></script>
+    <script type="module" src="js/clickerRemote.js"></script>
 </body>
 
 </html>
