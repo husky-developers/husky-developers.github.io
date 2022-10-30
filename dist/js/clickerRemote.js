@@ -57,6 +57,9 @@ scene.add(camera);
 
 // Controls
 const controls = new OrbitControls(camera, clicker_canvas);
+controls.enableZoom = false;
+controls.enablePan = false;
+
 
 const renderer = new THREE.WebGLRenderer({
   canvas: clicker_canvas,

@@ -52,11 +52,13 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(4, 2, 7);
+camera.position.set(3, 1, 4);
 scene.add(camera);
 
 // Controls
-const controls = new OrbitControls(camera, canvas);
+const controls = new OrbitControls(camera, laundry_canvas);
+controls.enableZoom = false;
+controls.enablePan = false;
 
 const renderer = new THREE.WebGLRenderer({
   canvas: laundry_canvas,
