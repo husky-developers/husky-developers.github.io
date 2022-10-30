@@ -9,7 +9,7 @@ const gltfLoader = new GLTFLoader();
 var clicker_remote;
 gltfLoader.load("assets/iClickerRemoteJoin.glb", function (glb) {
   console.log(glb);
-  laundry_machine = glb.scene;
+  clicker_remote = glb.scene;
   scene.add(clicker_remote);
 });
 
