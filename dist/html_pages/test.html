@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+
+    <style>body {margin: 0;} canvas {display: block;} </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"
+        integrity="sha512-yNJzAsg5JyP91u+sLHlUDULMBd3hmEiVkYeeN1cQBKaLZ7EyT6oH2u5THNIRM2Fu6VKcZJv+F/QAp1h/qzy9Ow=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script>
+    
+    <script type="module">
+        var filepath_washing_machine = '../assets/washing_machine.glb'
+        const gltfLoader = new THREE.GLTFLoader();
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        gltfLoader.load("../assets/washing_machine.glb", function (gltf) {
+            console.log(gltf);
+            scene.add(gltf.scene);
+
+        }, undefined, function (error) {
+
+            console.error(error);
+
+        });
+
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // const controls = new OrbitControls(camera, renderer.domElement);
+
+        document.body.appendChild(renderer.domElement);
+
+    </script>
+</body>
+
+</html>
