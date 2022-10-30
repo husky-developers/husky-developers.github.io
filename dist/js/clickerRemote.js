@@ -2,8 +2,8 @@ import { OrbitControls } from "https://unpkg.com/three@0.127.0/examples/jsm/cont
 import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 
-const canvas = document.querySelector(".webgl");
-const clicker_container = document.querySelector(".clicker_container");
+const clicker_canvas = document.getElementById("clicker-canvas");
+const clicker_container = document.getElementById("clicker-container");
 const scene = new THREE.Scene();
 const gltfLoader = new GLTFLoader();
 var clicker_remote;
@@ -56,10 +56,10 @@ camera.position.set(4, 2, 7);
 scene.add(camera);
 
 // Controls
-const controls = new OrbitControls(camera, canvas);
+const controls = new OrbitControls(camera, clicker_canvas);
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: canvas,
+  canvas: clicker_canvas,
   alpha: true, // this makes background blank
 });
 
