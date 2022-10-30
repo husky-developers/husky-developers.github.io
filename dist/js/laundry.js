@@ -2,8 +2,8 @@ import { OrbitControls } from "https://unpkg.com/three@0.127.0/examples/jsm/cont
 import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 
-const canvas = document.querySelector(".webgl");
-const laundry_container = document.querySelector(".laundry_container");
+const laundry_canvas = document.getElementById("laundry-canvas");
+const laundry_container = document.getElementById("laundry-container");
 const scene = new THREE.Scene();
 const gltfLoader = new GLTFLoader();
 var laundry_machine;
@@ -59,7 +59,7 @@ scene.add(camera);
 const controls = new OrbitControls(camera, canvas);
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: canvas,
+  canvas: laundry_canvas,
   alpha: true, // this makes background blank
 });
 
