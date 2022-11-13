@@ -20,7 +20,13 @@ gltfLoader.load("../assets/rocket_test.glb", function(glb) {
     scene.add(roc);
 });
 
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1.25);
+const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 10);
+directionalLight.position.set(-52.5, 80, -100)
+directionalLight.target.position.set(-52.5, 0, -100)
+scene.add(directionalLight);
+scene.add(directionalLight.target)
+
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, .5);
 scene.add(ambientLight);
 
 const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
@@ -85,13 +91,14 @@ for (let i = 0; i < 10; i += 0.01) {
 
 let j = 0;
 
-
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
     roc.position.y += pos[j]
     j += 1
     
+    let array = []
+
     if (j % 10 === 0) {
         var particle;
         gltfLoader.load("../assets/smoke.glb", function(glb) {
