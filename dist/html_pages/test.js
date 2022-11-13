@@ -85,11 +85,24 @@ for (let i = 0; i < 10; i += 0.01) {
 
 let j = 0;
 
+
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
     roc.position.y += pos[j]
     j += 1
+    
+    if (j % 10 === 0) {
+        var particle;
+        gltfLoader.load("../assets/smoke.glb", function(glb) {
+            particle = glb.scene
+            console.log(glb.scene)
+            particle.position.set(roc.position.x, roc.position.y - 25, roc.position.z);
+            particle.scale.set(Math.random() * 10, Math.random() * 10, Math.random() * 10)
+            scene.add(particle)
+        })
+    };
+    // console.log(particle.position)
 };
 
 animate();
