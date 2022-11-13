@@ -20,13 +20,13 @@ gltfLoader.load("../assets/rocket_test.glb", function(glb) {
     scene.add(roc);
 });
 
-const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 10);
+const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 2.5);
 directionalLight.position.set(-52.5, 80, -100)
 directionalLight.target.position.set(-52.5, 0, -100)
 scene.add(directionalLight);
 scene.add(directionalLight.target)
 
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, .5);
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.5);
 scene.add(ambientLight);
 
 const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
@@ -104,7 +104,7 @@ function createParticle() {
 
 function expandSmoke() {
     for (let particle of smoke) {
-        let factor = .5;
+        let factor = Math.random();
         let currentSize = particle.scale;
         let newX = currentSize.x + factor;
         let newY = currentSize.y + factor/2;
@@ -118,10 +118,8 @@ function animate() {
     renderer.render(scene, camera);
     roc.position.y += pos[j]
     j += 1
-    
-    let array = []
 
-    if (j % 10 === 0) {
+    if (j > 200 && j % 5 === 0) {
         createParticle();
         expandSmoke();
     };
