@@ -5,42 +5,29 @@ import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/
 const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x87CEEB);
-// const gltfLoader = new GLTFLoader();
-// var bagel;
-// gltfLoader.load("assets/everything.glb", function(glb) {
-// console.log(glb)
-// bagel = glb.scene
-// bagel.scale.set(15, 15, 15);
-// bagel.position.set(0, 0, 0)
-// bagel.rotation.y = (3 * Math.PI) / 2;
+const gltfLoader = new GLTFLoader();
+var env;
+var roc;
+gltfLoader.load("../assets/environment_test.glb", function(glb) {
+    env = glb.scene
+    env.position.set(0, 0, 0);
+    scene.add(env)
+})
+gltfLoader.load("../assets/rocket_test.glb", function(glb) {
+    console.log(glb);
+    roc = glb.scene;
+    roc.position.set(-105, 40, -200);
+    scene.add(roc);
+});
 
-// scene.add(bagel)
-// });
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1.25);
+scene.add(ambientLight);
 
-// Object
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshStandardMaterial({ color: 0x000000 });
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
-
-const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 10);
-directionalLight.position.set(0, 0, -5);
-directionalLight.target.position.set(0, 0, 0);
-scene.add(directionalLight);
-scene.add(directionalLight.target);
-
-const directionalLight2 = new THREE.DirectionalLight(0xffffff, 10);
-directionalLight2.position.set(-5, 0, 0);
-directionalLight2.target.position.set(0, 0, 0);
-scene.add(directionalLight2);
-scene.add(directionalLight2.target);
-
-const directionalLight3 = new THREE.DirectionalLight(0xffffff, 10);
-directionalLight3.position.set(0, -5, 0);
-directionalLight3.target.position.set(0, 0, 0);
-scene.add(directionalLight3);
-scene.add(directionalLight3.target);
-
+const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
+spotLight.position.set(-105, 80, -160)
+spotLight.target.position.set(-105, 50, -200)
+scene.add(spotLight)
+scene.add(spotLight.target)
 
 // Sizes
 const sizes = {
@@ -62,16 +49,25 @@ window.addEventListener("resize", () => {
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
-    75,
+    60,
     sizes.width / sizes.height,
     0.1,
-    100
-);
-camera.position.set(0, 0, 10);
-scene.add(camera);
+    500
+  );
+  camera.position.set(
+    0.005107356524073513, 
+    7.002503176031226, 
+    0.008224902375876341);
+  scene.add(camera);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
+controls.target.set(0, 7, 0);
+controls.maxDistance = 0.01;
+controls.enableZoom = false;
+controls.update();
+
+// console.log(camera.position)
 
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
@@ -92,7 +88,7 @@ let j = 0;
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    mesh.position.y += pos[j]
+    roc.position.y += pos[j]
     j += 1
 };
 
