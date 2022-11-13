@@ -90,6 +90,28 @@ for (let i = 0; i < 10; i += 0.01) {
 };
 
 let j = 0;
+let smoke = [];
+
+function createParticle() {
+    let particle;
+    gltfLoader.load("../assets/smoke.glb", function(glb) {
+        particle = glb.scene
+        particle.position.set(roc.position.x, roc.position.y - 25, roc.position.z);
+        scene.add(particle)
+        smoke.push(particle);
+    });
+}
+
+function expandSmoke() {
+    for (let particle of smoke) {
+        let factor = .5;
+        let currentSize = particle.scale;
+        let newX = currentSize.x + factor;
+        let newY = currentSize.y + factor/2;
+        let newZ = currentSize.z + factor;
+        particle.scale.set(newX, newY, newZ);
+    }
+}
 
 function animate() {
     requestAnimationFrame(animate);
@@ -100,16 +122,9 @@ function animate() {
     let array = []
 
     if (j % 10 === 0) {
-        var particle;
-        gltfLoader.load("../assets/smoke.glb", function(glb) {
-            particle = glb.scene
-            console.log(glb.scene)
-            particle.position.set(roc.position.x, roc.position.y - 25, roc.position.z);
-            particle.scale.set(Math.random() * 10, Math.random() * 10, Math.random() * 10)
-            scene.add(particle)
-        })
+        createParticle();
+        expandSmoke();
     };
-    // console.log(particle.position)
 };
 
 animate();
