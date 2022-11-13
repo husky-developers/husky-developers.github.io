@@ -98,10 +98,10 @@ function createParticle() {
 
 function expandSmoke() {
     for (let particle of smoke) {
-        let factor = .25;
+        let factor = .5;
         let currentSize = particle.scale;
         let newX = currentSize.x + factor;
-        let newY = currentSize.y;
+        let newY = currentSize.y + factor/2;
         let newZ = currentSize.z + factor;
         particle.scale.set(newX, newY, newZ);
     }
