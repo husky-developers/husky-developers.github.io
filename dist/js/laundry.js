@@ -7,7 +7,7 @@ const laundry_container = document.getElementById("laundry-container");
 const scene = new THREE.Scene();
 const gltfLoader = new GLTFLoader();
 var laundry_machine;
-gltfLoader.load("assets/washing_machine.glb", function (glb) {
+gltfLoader.load("assets/laundry_machine.glb", function (glb) {
   console.log(glb);
   laundry_machine = glb.scene;
   scene.add(laundry_machine);
