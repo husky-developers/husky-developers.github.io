@@ -26,7 +26,7 @@ directionalLight.target.position.set(-52.5, 0, -100)
 scene.add(directionalLight);
 scene.add(directionalLight.target)
 
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.5);
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1);
 scene.add(ambientLight);
 
 const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
@@ -92,11 +92,12 @@ for (let i = 0; i < 10; i += 0.01) {
 let j = 0;
 let smoke = [];
 
-function createParticle() {
+function createParticle(a, b) {
     let particle;
-    gltfLoader.load("../assets/smoke.glb", function(glb) {
+    gltfLoader.load("../assets/small_smoke.glb", function(glb) {
         particle = glb.scene
-        particle.position.set(roc.position.x, roc.position.y - 25, roc.position.z);
+        particle.scale.set(2, 2, 2)
+        particle.position.set(roc.position.x + a, roc.position.y - 25, roc.position.z + b);
         scene.add(particle)
         smoke.push(particle);
     });
@@ -119,8 +120,15 @@ function animate() {
     roc.position.y += pos[j]
     j += 1
 
-    if (j > 200 && j % 5 === 0) {
-        createParticle();
+    if (j > 215 && j % 5 === 0) {
+        createParticle(0, Math.random() * 5);
+        createParticle(0, Math.random * -5);
+        createParticle(Math.random() * 5, 0);
+        createParticle(Math.random() * -5, 0);
+        createParticle(Math.random()* 5, Math.random() * 5);
+        createParticle(Math.random() * 5, Math.random() * -5);
+        createParticle(Math.random() * -5, Math.random() * -5);
+        createParticle(Math.random() * -5, Math.random() * 5);
         expandSmoke();
     };
 };
