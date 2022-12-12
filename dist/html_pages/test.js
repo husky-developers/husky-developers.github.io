@@ -4,7 +4,7 @@ import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/
 
 const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x87CEEB);
+scene.background = new THREE.Color(0x73D7FF);
 const gltfLoader = new GLTFLoader();
 var env;
 var roc;
@@ -12,7 +12,7 @@ gltfLoader.load("../assets/environment_test.glb", function(glb) {
     env = glb.scene
     env.position.set(0, 0, 0);
     scene.add(env)
-})
+});
 gltfLoader.load("../assets/rocket_test.glb", function(glb) {
     console.log(glb);
     roc = glb.scene;
@@ -68,12 +68,30 @@ const camera = new THREE.PerspectiveCamera(
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
-controls.target.set(0, 7, 0);
+controls.target.set(0, 7.001, 0);
 controls.maxDistance = 0.01;
 controls.enableZoom = false;
 controls.update();
 
+// function cameraShakeRight() {
+//     let target = controls.target
+//     target.x -= 1
+// }
+
+// function cameraShakeLeft() {
+//     let target = controls.target
+//     target.x += 2
+// }
+
+// function restoreCamera() {
+//     let target = controls.target
+//     target.set(0, 7.001, 0);
+// }
+
 // console.log(camera.position)
+
+// Fog
+scene.fog = new THREE.Fog()
 
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
@@ -84,10 +102,14 @@ renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.shadowMap.enabled = true;
 
+// Rocket Acceleration
+
 let pos = []
 for (let i = 0; i < 10; i += 0.01) {
     pos.push(0.005*i*i);
 };
+
+// Smoke Function
 
 let j = 0;
 let smoke = [];
@@ -121,6 +143,7 @@ function animate() {
     j += 1
 
     if (j > 215 && j % 5 === 0) {
+        // restoreCamera();
         createParticle(0, Math.random() * 5);
         createParticle(0, Math.random * -5);
         createParticle(Math.random() * 5, 0);
@@ -130,6 +153,8 @@ function animate() {
         createParticle(Math.random() * -5, Math.random() * -5);
         createParticle(Math.random() * -5, Math.random() * 5);
         expandSmoke();
+        // cameraShakeRight();
+        // cameraShakeLeft();
     };
 };
 
