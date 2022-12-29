@@ -176,8 +176,6 @@ function animate() {
     };
 
     if (j > 215 && j % 5 === 0) {
-        // restoreCamera();
-        // animate rocket's trail
         createParticle(0, Math.random() * 5);
         createParticle(0, Math.random * -5);
         createParticle(Math.random() * 5, 0);
@@ -187,8 +185,6 @@ function animate() {
         createParticle(Math.random() * -5, Math.random() * -5);
         createParticle(Math.random() * -5, Math.random() * 5);
         expandSmoke();
-        // cameraShakeRight();
-        // cameraShakeLeft();
     };
 };
 
