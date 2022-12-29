@@ -7,7 +7,7 @@ const laundry_container = document.getElementById("laundry-container");
 const scene = new THREE.Scene();
 const gltfLoader = new GLTFLoader();
 var laundry_machine;
-gltfLoader.load("assets/laundry_machine.glb", function (glb) {
+gltfLoader.load("assets/washing_machine.glb", function (glb) {
   console.log(glb);
   laundry_machine = glb.scene;
   scene.add(laundry_machine);
@@ -18,6 +18,8 @@ gltfLoader.load("assets/laundry_machine.glb", function (glb) {
 // const material = new THREE.MeshStandardMaterial({ color: 0x0f0f0f });
 // const mesh = new THREE.Mesh(geometry, material);
 // scene.add(mesh);
+
+scene.background = new THREE.Color(0x000011);
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
 directionalLight.position.set(20, 20, 10);
