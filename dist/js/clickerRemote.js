@@ -13,6 +13,8 @@ gltfLoader.load("assets/iClickerRemoteJoin.glb", function (glb) {
   scene.add(clicker_remote);
 });
 
+scene.background = new THREE.Color(0x000011);
+
 // Object
 // const geometry = new THREE.BoxGeometry(1, 1, 1);
 // const material = new THREE.MeshStandardMaterial({ color: 0x0f0f0f });
