@@ -2,6 +2,7 @@ import { OrbitControls } from "https://unpkg.com/three@0.127.0/examples/jsm/cont
 import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 
+// Load objects
 const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x73D7FF);
@@ -20,6 +21,7 @@ gltfLoader.load("../assets/rocket_test.glb", function(glb) {
     scene.add(roc);
 });
 
+// Lights
 const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 2.5);
 directionalLight.position.set(-52.5, 80, -100)
 directionalLight.target.position.set(-52.5, 0, -100)
@@ -73,23 +75,6 @@ controls.maxDistance = 0.01;
 controls.enableZoom = false;
 controls.update();
 
-// function cameraShakeRight() {
-//     let target = controls.target
-//     target.x -= 1
-// }
-
-// function cameraShakeLeft() {
-//     let target = controls.target
-//     target.x += 2
-// }
-
-// function restoreCamera() {
-//     let target = controls.target
-//     target.set(0, 7.001, 0);
-// }
-
-// console.log(camera.position)
-
 // Fog
 scene.fog = new THREE.Fog()
 
@@ -136,14 +121,63 @@ function expandSmoke() {
     }
 }
 
+// Change Camera Position to Lauch, and Shake
+function launchCamera() {
+    controls.enabled = false
+    camera.position.x = -90
+    camera.position.y = 80
+    camera.position.z = -210
+    camera.lookAt(roc.position)
+}
+
+function restoreCamera() {
+    controls.enabled = true
+    camera.position.set(
+        0.005107356524073513, 
+        7.002503176031226, 
+        0.008224902375876341);
+    controls.target.set(0, 7.001, 0);
+    controls.maxDistance = 0.01;
+    controls.enableZoom = false;
+    controls.update();
+}
+
+function CameraRight() {
+    camera.position.z -= 0.1
+    camera.position.x -= 0.1
+}
+
+function CameraLeft() {
+    camera.position.z += 0.2
+    camera.position.x += 0.2
+}
+
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
     roc.position.y += pos[j]
     j += 1
 
+    if (240 < j && j < 840) {
+        // move camera
+        launchCamera()
+        if (j % 6 == 0) {
+            CameraRight()
+        }
+        else if (j % 6 == 2) {
+            CameraLeft()
+        }
+        else if (j % 6 == 4) {
+            CameraRight()
+        }
+    }
+    else if (j == 845) {
+        restoreCamera()
+    };
+
     if (j > 215 && j % 5 === 0) {
         // restoreCamera();
+        // animate rocket's trail
         createParticle(0, Math.random() * 5);
         createParticle(0, Math.random * -5);
         createParticle(Math.random() * 5, 0);
