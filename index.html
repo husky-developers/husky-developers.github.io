@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-doc" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8" />
@@ -9,58 +9,84 @@
     <title>Husky Developers</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <link href="css/styles.css" rel="stylesheet" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        .gradient-text {
+            /* Fallback: Set a background color. */
+            background-color: blue;
+
+            /* Create the gradient. */
+            background-image: linear-gradient(45deg, #78d6f3, #4250af);
+
+            /* Set the background size and repeat properties. */
+            background-size: 100%;
+            background-repeat: repeat;
+
+            /* Use the text as a mask for the background. */
+            /* This will show the gradient as a text color rather than element bg. */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -moz-background-clip: text;
+            -moz-text-fill-color: transparent;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom">
+    <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #000000;" id="navbar-page">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand fw-bold" href="#!">Husky Developers</a>
+            <a class="navbar-brand fw-bold gradient-text">Husky Developers</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="https://discord.com/invite/5mBWuRhrnH">Discord</a>
+                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
+                            href="https://discord.com/invite/5mBWuRhrnH">Discord</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link"
+                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
                             href="https://www.instagram.com/huskydevelopers/">Instagram</a></li>
-                    <li class="nav-item"><a class="nav-link"
+                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
                             href="https://uconntact.uconn.edu/organization/huskydevelopers">UConntact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://github.com/husky-developers">GitHub</a>
+                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
+                            href="https://github.com/husky-developers">GitHub</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="html_pages/test.html">&copy; 2022</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
+                            href="html_pages/test.html">&copy;
+                            2022</a></li>
+                    <li class="nav-item">&nbsp;&nbsp;<button class="btn btn-outline-secondary"
+                            onclick="toggleDarkMode('dark')"><i class="ri-sun-line"></i></button>
                 </ul>
             </div>
 
         </div>
     </nav>
-    <div id="progressBar"></div>
-    <div id="progressBarContainer"></div>
     <!-- Page Content-->
-    <div class="container px-4 px-lg-5">
+    <div data-bs-theme="dark" class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5" style="height: 100vh;">
-            <div class="col-lg-6">
-                <h1 class="mt-5 text-white fw-bold">Husky Developers</h1>
-                <p class="mt-5 text-white">UConn club that creates websites</p>
+            <div class="col-lg-6" id="welcome-page">
+                <h1 class="display-1 fw-bold pt-5 mt-5 gradient-text">Welcome</h1>
+                <h4 class="text-muted">We are a UConn club that creates websites</h4>
             </div>
         </div>
     </div>
 
     <div class="container py-4">
-        <div class="p-5 mb-4 bg-light rounded-3">
-            <div class="row align-items-md-stretch">
-                <div class="container-fluid py-5 col-md-9">
-                    <h1 class="display-5 fw-bold">By Students For Students</h1>
-                    <p class="fs-4">In our meetings we teach cutting edge web technologies that aim to create
-                        memorable and delverable services</p>
-                </div>
-                <div class="col-md-3">
-                    <img class="img-fluid rounded float-end" src="assets/husky-dev-logo.jpg" alt="husky-dev-logo">
-                </div>
-            </div>
-        </div>
         <div class="p-5 mb-4 bg-light rounded-3">
             <a href="https://aditya-chandraker.me/">adi</a>
         </div>
@@ -72,8 +98,8 @@
             </div>
             <div class="col-md-9">
                 <div class="h-100 p-5 bg-light border">
-                    <h4>ClickerConn &nbsp;<button class="btn btn-outline-secondary" style="transform:translate(0,-2px)"
-                            type="button">Launch</button></h2>
+                    <h4 style="color: black;">QenA &nbsp;<button class="btn btn-outline-secondary"
+                            style="transform:translate(0,-2px)" type="button">Launch</button></h2>
                         <p>A replacement for the original iclicker system at UConn which didn't do quite enough.
                         </p>
 
@@ -88,8 +114,8 @@
             </div>
             <div class="col-md-9">
                 <div class="h-100 p-5 bg-light border">
-                    <h4>LaundryConn &nbsp;<button class="btn btn-outline-secondary" style="transform:translate(0,-2px)"
-                            type="button">Launch</button></h2>
+                    <h4 style="color: black;">LaundryConn &nbsp;<button class="btn btn-outline-secondary"
+                            style="transform:translate(0,-2px)" type="button">Launch</button></h2>
                         <p>A system to find out if a laundry machine is occupied.</p>
 
                 </div>
@@ -97,13 +123,13 @@
         </div>
         <div class="row align-items-md-stretch mb-4 ">
             <div class="col-md-3">
-                <div class="h-100 p-5 text-white bg-dark">
+                <div class="h-100 p-5 bg-dark">
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="h-100 p-5 bg-light border">
-                    <h4>Kinnect Live &nbsp;<button class="btn btn-outline-secondary" style="transform:translate(0,-2px)"
-                            type="button">Launch</button></h2>
+                    <h4 style="color: black;">Goaltac &nbsp;<button class="btn btn-outline-secondary"
+                            style="transform:translate(0,-2px);" type="button">Launch</button></h2>
                         <p>A Social media platform that help people set goals and complete them</p>
 
                 </div>
@@ -112,10 +138,39 @@
         <br><br>
     </div>
 
+    <script>
+        darkmode = true;
+
+        function unfade(element) {
+            var op = -.5;  // initial opacity
+            element.style.display = 'block';
+            var timer = setInterval(function () {
+                if (op >= 1) {
+                    clearInterval(timer);
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op += 0.01;
+            }, 10);
+        }
+
+        unfade(document.getElementById("welcome-page"));
+        unfade(document.getElementById("navbar-page"));
+
+        function toggleDarkMode() {
+            if (darkmode) {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "light");
+            } else {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "dark");
+            }
+            darkmode = !darkmode;
+        }
+    </script>
+
     <!-- Bootstrap core JS-->
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
     <!-- Scroll JS-->
-    <script src="js/scroll.js"></script>
+    <!-- <script src="js/scroll.js"></script> -->
     <!-- Three JS files-->
     <script type="module" src="js/laundry.js"></script>
     <script type="module" src="js/clickerRemote.js"></script>
