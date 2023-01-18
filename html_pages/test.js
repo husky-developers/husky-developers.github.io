@@ -7,18 +7,44 @@ const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x73D7FF);
 const gltfLoader = new GLTFLoader();
+
 var env;
-var roc;
-gltfLoader.load("../assets/environment_test.glb", function(glb) {
+gltfLoader.load("../assets/Environment.glb", function (glb) {
     env = glb.scene
     env.position.set(0, 0, 0);
     scene.add(env)
 });
-gltfLoader.load("../assets/rocket_test.glb", function(glb) {
+
+var roc;
+gltfLoader.load("../assets/Rocket.glb", function (glb) {
     console.log(glb);
     roc = glb.scene;
-    roc.position.set(-105, 40, -200);
+    roc.position.set(0, 0, 0);
     scene.add(roc);
+});
+
+var roc_ho;
+gltfLoader.load("../assets/Rocket_Holder.glb", function (glb) {
+    console.log(glb);
+    roc_ho = glb.scene;
+    roc_ho.position.set(0, 0, 0);
+    scene.add(roc_ho);
+});
+var launch_room;
+gltfLoader.load("../assets/LaunchRoom.glb", function (glb) {
+    console.log(glb);
+    launch_room = glb.scene;
+    launch_room.position.set(0, 0, 0);
+    scene.add(launch_room);
+});
+
+
+var button;
+gltfLoader.load("../assets/LaunchButton.glb", function (glb) {
+    console.log(glb);
+    button = glb.scene;
+    button.position.set(0, 0, 0);
+    scene.add(button);
 });
 
 // Lights
@@ -61,17 +87,19 @@ const camera = new THREE.PerspectiveCamera(
     sizes.width / sizes.height,
     0.1,
     500
-  );
-  camera.position.set(
-    0.005107356524073513, 
-    7.002503176031226, 
-    0.008224902375876341);
-  scene.add(camera);
+);
+camera.position.set(
+    127.4197346173197,
+    8.852875995173607,
+    -115.69718154158252);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
-controls.target.set(0, 7.001, 0);
-controls.maxDistance = 0.01;
+controls.target.set(
+    126.197346173197,
+    8.852875995173607,
+    -114.59718154158252);
+console.log(controls.target);
 controls.enableZoom = false;
 controls.update();
 
@@ -91,7 +119,7 @@ renderer.shadowMap.enabled = true;
 
 let pos = []
 for (let i = 0; i < 10; i += 0.01) {
-    pos.push(0.005*i*i);
+    pos.push(0.005 * i * i);
 };
 
 // Smoke Function
@@ -101,10 +129,10 @@ let smoke = [];
 
 function createParticle(a, b) {
     let particle;
-    gltfLoader.load("../assets/small_smoke.glb", function(glb) {
+    gltfLoader.load("../assets/small_smoke.glb", function (glb) {
         particle = glb.scene
         particle.scale.set(2, 2, 2)
-        particle.position.set(roc.position.x + a, roc.position.y - 25, roc.position.z + b);
+        particle.position.set(roc.position.x + a, roc.position.y + 8, roc.position.z + b);
         scene.add(particle)
         smoke.push(particle);
     });
@@ -115,7 +143,7 @@ function expandSmoke() {
         let factor = Math.random();
         let currentSize = particle.scale;
         let newX = currentSize.x + factor;
-        let newY = currentSize.y + factor/2;
+        let newY = currentSize.y + factor / 2;
         let newZ = currentSize.z + factor;
         particle.scale.set(newX, newY, newZ);
     }
@@ -124,33 +152,35 @@ function expandSmoke() {
 // Change Camera Position to Lauch, and Shake
 function launchCamera() {
     controls.enabled = false
-    camera.position.x = -90
-    camera.position.y = 80
-    camera.position.z = -210
+    camera.position.x = 0
+    camera.position.y = 70
+    camera.position.z = 10
     camera.lookAt(roc.position)
-}
+};
 
 function restoreCamera() {
     controls.enabled = true
     camera.position.set(
-        0.005107356524073513, 
-        7.002503176031226, 
-        0.008224902375876341);
-    controls.target.set(0, 7.001, 0);
-    controls.maxDistance = 0.01;
+        127.4197346173197,
+        8.852875995173607,
+        -115.69718154158252);
+    controls.target.set(
+        126.197346173197,
+        8.852875995173607,
+        -114.59718154158252);
     controls.enableZoom = false;
     controls.update();
-}
+};
 
 function CameraRight() {
     camera.position.z -= 0.1
     camera.position.x -= 0.1
-}
+};
 
 function CameraLeft() {
     camera.position.z += 0.2
     camera.position.x += 0.2
-}
+};
 
 function animate() {
     requestAnimationFrame(animate);
@@ -158,7 +188,7 @@ function animate() {
     roc.position.y += pos[j]
     j += 1
 
-    if (240 < j && j < 840) {
+    if (240 < j && j < 560) {
         // move camera
         launchCamera()
         if (j % 6 == 0) {
@@ -171,16 +201,16 @@ function animate() {
             CameraRight()
         }
     }
-    else if (j == 845) {
+    else if (j == 560) {
         restoreCamera()
     };
 
-    if (j > 215 && j % 5 === 0) {
+    if (j > 140 && j % 5 === 0) {
         createParticle(0, Math.random() * 5);
         createParticle(0, Math.random * -5);
         createParticle(Math.random() * 5, 0);
         createParticle(Math.random() * -5, 0);
-        createParticle(Math.random()* 5, Math.random() * 5);
+        createParticle(Math.random() * 5, Math.random() * 5);
         createParticle(Math.random() * 5, Math.random() * -5);
         createParticle(Math.random() * -5, Math.random() * -5);
         createParticle(Math.random() * -5, Math.random() * 5);
