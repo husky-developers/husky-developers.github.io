@@ -7,34 +7,36 @@ const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x73D7FF);
 const gltfLoader = new GLTFLoader();
+
 var env;
-var roc;
-var roc_ho;
-var launch_room;
 gltfLoader.load("../assets/Environment.glb", function (glb) {
     env = glb.scene
     env.position.set(0, 0, 0);
     scene.add(env)
 });
+
+var roc;
 gltfLoader.load("../assets/Rocket.glb", function (glb) {
     console.log(glb);
     roc = glb.scene;
     roc.position.set(0, 0, 0);
     scene.add(roc);
 });
+
+var roc_ho;
 gltfLoader.load("../assets/Rocket_Holder.glb", function (glb) {
     console.log(glb);
     roc_ho = glb.scene;
     roc_ho.position.set(0, 0, 0);
     scene.add(roc_ho);
 });
+var launch_room;
 gltfLoader.load("../assets/Launch_room.glb", function (glb) {
     console.log(glb);
     launch_room = glb.scene;
     launch_room.position.set(0, 0, 0);
     scene.add(launch_room);
 });
-
 
 // Lights
 const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 2.5);
@@ -85,7 +87,11 @@ console.log(camera.position);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
-// controls.target.set(0, 7.001, 0);
+controls.target.set(
+    126.197346173197, 
+    8.852875995173607, 
+    -114.59718154158252);
+console.log(controls.target);
 // controls.maxDistance = 0.01;
 controls.enableZoom = false;
 controls.update();
