@@ -89,19 +89,17 @@ const camera = new THREE.PerspectiveCamera(
     500
 );
 camera.position.set(
-    127.4197346173197, 
-    8.852875995173607, 
+    127.4197346173197,
+    8.852875995173607,
     -115.69718154158252);
-console.log(camera.position);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.target.set(
-    126.197346173197, 
-    8.852875995173607, 
+    126.197346173197,
+    8.852875995173607,
     -114.59718154158252);
 console.log(controls.target);
-// controls.maxDistance = 0.01;
 controls.enableZoom = false;
 controls.update();
 
@@ -152,35 +150,37 @@ function expandSmoke() {
 }
 
 // Change Camera Position to Lauch, and Shake
-// function launchCamera() {
-//     controls.enabled = false
-//     camera.position.x = -90
-//     camera.position.y = 80
-//     camera.position.z = -210
-//     camera.lookAt(roc.position)
-// }
+function launchCamera() {
+    controls.enabled = false
+    camera.position.x = 0
+    camera.position.y = 70
+    camera.position.z = 10
+    camera.lookAt(roc.position)
+};
 
-// function restoreCamera() {
-//     controls.enabled = true
-//     camera.position.set(
-//         0.005107356524073513,
-//         7.002503176031226,
-//         0.008224902375876341);
-//     controls.target.set(0, 7.001, 0);
-//     controls.maxDistance = 0.01;
-//     controls.enableZoom = false;
-//     controls.update();
-// }
+function restoreCamera() {
+    controls.enabled = true
+    camera.position.set(
+        127.4197346173197,
+        8.852875995173607,
+        -115.69718154158252);
+    controls.target.set(
+        126.197346173197,
+        8.852875995173607,
+        -114.59718154158252);
+    controls.enableZoom = false;
+    controls.update();
+};
 
-// function CameraRight() {
-//     camera.position.z -= 0.1
-//     camera.position.x -= 0.1
-// }
+function CameraRight() {
+    camera.position.z -= 0.1
+    camera.position.x -= 0.1
+};
 
-// function CameraLeft() {
-//     camera.position.z += 0.2
-//     camera.position.x += 0.2
-// }
+function CameraLeft() {
+    camera.position.z += 0.2
+    camera.position.x += 0.2
+};
 
 function animate() {
     requestAnimationFrame(animate);
@@ -188,22 +188,22 @@ function animate() {
     roc.position.y += pos[j]
     j += 1
 
-    // if (240 < j && j < 840) {
-    //     // move camera
-    //     launchCamera()
-    //     if (j % 6 == 0) {
-    //         CameraRight()
-    //     }
-    //     else if (j % 6 == 2) {
-    //         CameraLeft()
-    //     }
-    //     else if (j % 6 == 4) {
-    //         CameraRight()
-    //     }
-    // }
-    // else if (j == 845) {
-    //     restoreCamera()
-    // };
+    if (240 < j && j < 560) {
+        // move camera
+        launchCamera()
+        if (j % 6 == 0) {
+            CameraRight()
+        }
+        else if (j % 6 == 2) {
+            CameraLeft()
+        }
+        else if (j % 6 == 4) {
+            CameraRight()
+        }
+    }
+    else if (j == 560) {
+        restoreCamera()
+    };
 
     if (j > 140 && j % 5 === 0) {
         createParticle(0, Math.random() * 5);
