@@ -31,11 +31,20 @@ gltfLoader.load("../assets/Rocket_Holder.glb", function (glb) {
     scene.add(roc_ho);
 });
 var launch_room;
-gltfLoader.load("../assets/Launch_room.glb", function (glb) {
+gltfLoader.load("../assets/LaunchRoom.glb", function (glb) {
     console.log(glb);
     launch_room = glb.scene;
     launch_room.position.set(0, 0, 0);
     scene.add(launch_room);
+});
+
+
+var button;
+gltfLoader.load("../assets/LaunchButton.glb", function (glb) {
+    console.log(glb);
+    button = glb.scene;
+    button.position.set(0, 0, 0);
+    scene.add(button);
 });
 
 // Lights
