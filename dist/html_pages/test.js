@@ -173,13 +173,13 @@ function restoreCamera() {
 };
 
 function CameraRight() {
-    camera.position.z -= 0.1
-    camera.position.x -= 0.1
+    camera.position.z -= Math.random()
+    camera.position.x -= Math.random()
 };
 
 function CameraLeft() {
-    camera.position.z += 0.2
-    camera.position.x += 0.2
+    camera.position.z += Math.random()
+    camera.position.x += Math.random()
 };
 
 function animate() {
