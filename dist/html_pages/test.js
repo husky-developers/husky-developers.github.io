@@ -3,6 +3,7 @@ import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 
 // Load objects
+
 const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x73D7FF);
@@ -83,11 +84,12 @@ window.addEventListener("resize", () => {
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
-    60,
+    50,
     sizes.width / sizes.height,
     0.1,
     500
 );
+
 camera.position.set(
     127.4197346173197,
     8.852875995173607,
@@ -216,6 +218,10 @@ function animate() {
         createParticle(Math.random() * -5, Math.random() * 5);
         expandSmoke();
     };
+
+    if (j == 2000) {
+        window.location.replace('../index.html')
+    }
 };
 
 animate();
