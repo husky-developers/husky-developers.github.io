@@ -10,7 +10,7 @@ scene.background = new THREE.Color(0x73D7FF);
 const gltfLoader = new GLTFLoader();
 
 var env;
-gltfLoader.load("../assets/Environment.glb", function (glb) {
+gltfLoader.load("../assets/EnvironmentLaunchRoom.glb", function (glb) {
     env = glb.scene
     env.position.set(0, 0, 0);
     scene.add(env)
@@ -31,14 +31,6 @@ gltfLoader.load("../assets/Rocket_Holder.glb", function (glb) {
     roc_ho.position.set(0, 0, 0);
     scene.add(roc_ho);
 });
-var launch_room;
-gltfLoader.load("../assets/LaunchRoom.glb", function (glb) {
-    console.log(glb);
-    launch_room = glb.scene;
-    launch_room.position.set(0, 0, 0);
-    scene.add(launch_room);
-});
-
 
 var button;
 gltfLoader.load("../assets/LaunchButton.glb", function (glb) {
@@ -154,9 +146,6 @@ function expandSmoke() {
 // Change Camera Position to Lauch, and Shake
 function launchCamera() {
     controls.enabled = false
-    camera.position.x = 0
-    camera.position.y = 70
-    camera.position.z = 10
     camera.lookAt(roc.position)
 };
 
@@ -175,53 +164,64 @@ function restoreCamera() {
 };
 
 function CameraRight() {
-    camera.position.z -= Math.random()
-    camera.position.x -= Math.random()
+    camera.position.z -= Math.random() / 2
+    camera.position.x -= Math.random() / 2
 };
 
 function CameraLeft() {
-    camera.position.z += Math.random()
-    camera.position.x += Math.random()
+    camera.position.z += Math.random() / 2
+    camera.position.x += Math.random() / 2
 };
+function fixCamera() {
+    camera.position.set(
+    127.4197346173197,
+    8.852875995173607,
+    -115.69718154158252);
+}
 
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    roc.position.y += pos[j]
-    j += 1
+    j += 1;
+    if (j >= 320) {
+        if (roc_ho.rotation.x < 0.2) {
+            roc_ho.rotation.x += 0.001
+        };
+        roc.position.y += pos[j - 320]
+        if (j > 375) {
+            if (j < 1250) {
+                // move camera
+                launchCamera()
+                if (j % 6 == 0) {
+                    CameraRight()
+                }
+                else if (j % 6 == 2) {
+                    CameraLeft()
+                }
+                else if (j % 6 == 4) {
+                    fixCamera()
+                }
+            }
+            else if (j == 1250) {
+                restoreCamera()
+            };
+            if (j % 5 == 0) {
+                createParticle(0, Math.random() * 5);
+                createParticle(0, Math.random * -5);
+                createParticle(Math.random() * 5, 0);
+                createParticle(Math.random() * -5, 0);
+                createParticle(Math.random() * 5, Math.random() * 5);
+                createParticle(Math.random() * 5, Math.random() * -5);
+                createParticle(Math.random() * -5, Math.random() * -5);
+                createParticle(Math.random() * -5, Math.random() * 5);
+                expandSmoke();
+            };
 
-    if (240 < j && j < 560) {
-        // move camera
-        launchCamera()
-        if (j % 6 == 0) {
-            CameraRight()
-        }
-        else if (j % 6 == 2) {
-            CameraLeft()
-        }
-        else if (j % 6 == 4) {
-            CameraRight()
-        }
-    }
-    else if (j == 560) {
-        restoreCamera()
+            if (j == 2100) {
+                window.location.replace('../index.html')
+            };
+        };
     };
-
-    if (j > 140 && j % 5 === 0) {
-        createParticle(0, Math.random() * 5);
-        createParticle(0, Math.random * -5);
-        createParticle(Math.random() * 5, 0);
-        createParticle(Math.random() * -5, 0);
-        createParticle(Math.random() * 5, Math.random() * 5);
-        createParticle(Math.random() * 5, Math.random() * -5);
-        createParticle(Math.random() * -5, Math.random() * -5);
-        createParticle(Math.random() * -5, Math.random() * 5);
-        expandSmoke();
-    };
-
-    if (j == 2000) {
-        window.location.replace('../index.html')
-    }
 };
 
 animate();
