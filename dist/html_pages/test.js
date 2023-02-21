@@ -6,7 +6,7 @@ import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/
 
 const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x73D7FF);
+scene.background = new THREE.Color(0x292C2D);
 const gltfLoader = new GLTFLoader();
 
 var env;
@@ -41,20 +41,21 @@ gltfLoader.load("../assets/LaunchButton.glb", function (glb) {
 });
 
 // Lights
-const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 2.5);
-directionalLight.position.set(-52.5, 80, -100)
-directionalLight.target.position.set(-52.5, 0, -100)
-scene.add(directionalLight);
-scene.add(directionalLight.target)
-
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1);
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.25);
 scene.add(ambientLight);
 
-const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
-spotLight.position.set(-105, 80, -160)
-spotLight.target.position.set(-105, 50, -200)
-scene.add(spotLight)
+const spotLight = new THREE.DirectionalLight(0xFFFFFF, 2.5);
+spotLight.position.set(-52.5, 80, -100)
+spotLight.target.position.set(-52.5, 0, -100)
+scene.add(spotLight);
 scene.add(spotLight.target)
+
+
+const spotLight2 = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
+spotLight2.position.set(-105, 80, -160)
+spotLight2.target.position.set(-105, 50, -200)
+scene.add(spotLight2)
+scene.add(spotLight2.target)
 
 // Sizes
 const sizes = {
@@ -98,7 +99,7 @@ controls.enableZoom = false;
 controls.update();
 
 // Fog
-scene.fog = new THREE.Fog()
+scene.fog = new THREE.FogExp2(0xD3D3D3, 0.005)
 
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
@@ -164,13 +165,13 @@ function restoreCamera() {
 };
 
 function CameraRight() {
-    camera.position.z -= Math.random() / 2
-    camera.position.x -= Math.random() / 2
+    camera.position.z -= Math.random() / 8
+    camera.position.x -= Math.random() / 8
 };
 
 function CameraLeft() {
-    camera.position.z += Math.random() / 2
-    camera.position.x += Math.random() / 2
+    camera.position.z += Math.random() / 8
+    camera.position.x += Math.random() / 8
 };
 function fixCamera() {
     camera.position.set(

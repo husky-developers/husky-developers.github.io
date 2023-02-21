@@ -139,7 +139,7 @@
     </div>
 
     <script>
-        darkmode = true;
+        darkmode = false;
 
         function unfade(element) {
             var op = -.5;  // initial opacity
@@ -159,9 +159,9 @@
 
         function toggleDarkMode() {
             if (darkmode) {
-                document.getElementById("html-doc").setAttribute("data-bs-theme", "light");
-            } else {
                 document.getElementById("html-doc").setAttribute("data-bs-theme", "dark");
+            } else {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "light");
             }
             darkmode = !darkmode;
         }
