@@ -38,9 +38,9 @@
 
             /* Use the text as a mask for the background. */
             /* This will show the gradient as a text color rather than element bg. */
-            -webkit-background-clip: text;
+            /* -webkit-background-clip: text; */
             -webkit-text-fill-color: transparent;
-            -moz-background-clip: text;
+            /* -moz-background-clip: text; */
             -moz-text-fill-color: transparent;
         }
     </style>
@@ -73,9 +73,9 @@
                             onclick="toggleDarkMode('dark')"><i class="ri-sun-line"></i></button>
                 </ul>
             </div>
-
         </div>
     </nav>
+    
     <!-- Page Content-->
     <div data-bs-theme="dark" class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5" style="height: 100vh;">
@@ -98,8 +98,11 @@
             </div>
             <div class="col-md-9">
                 <div class="h-100 p-5 bg-light border">
-                    <h4 style="color: black;">QenA &nbsp;<button class="btn btn-outline-secondary"
-                            style="transform:translate(0,-2px)" type="button">Launch</button></h2>
+                    <h4 style="color: black;">QenA &nbsp;
+                        <a href="https://qena.live">
+                            <button class="btn btn-outline-secondary"
+                                style="transform:translate(0,-2px)" type="button">Launch</button></h2>
+                        </a>
                         <p>A replacement for the original iclicker system at UConn which didn't do quite enough.
                         </p>
 
@@ -122,20 +125,23 @@
             </div>
         </div>
         <div class="row align-items-md-stretch mb-4 ">
-            <div class="col-md-3">
-                <div class="h-100 p-5 bg-dark">
+            <div class="col-md-3" id="board-container">
+                <div class="text-white">
+                    <canvas id="board-canvas"></canvas>
                 </div>
             </div>
             <div class="col-md-9">
                 <div class="h-100 p-5 bg-light border">
-                    <h4 style="color: black;">Goaltac &nbsp;<button class="btn btn-outline-secondary"
-                            style="transform:translate(0,-2px);" type="button">Launch</button></h2>
+                    <h4 style="color: black;">Goaltac &nbsp;
+                        <a href="https://goaltac.net">
+                            <button class="btn btn-outline-secondary"
+                                style="transform:translate(0,-2px);" type="button">Launch</button></h2>
+                        </a>
                         <p>A Social media platform that help people set goals and complete them</p>
 
                 </div>
             </div>
         </div>
-        <br><br>
     </div>
 
     <script>
@@ -174,6 +180,7 @@
     <!-- Three JS files-->
     <script type="module" src="js/laundry.js"></script>
     <script type="module" src="js/clickerRemote.js"></script>
+    <script type="module" src="js/dartboard.js"></script>
 </body>
 
 </html>
