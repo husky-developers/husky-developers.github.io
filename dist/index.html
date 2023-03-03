@@ -38,9 +38,9 @@
 
             /* Use the text as a mask for the background. */
             /* This will show the gradient as a text color rather than element bg. */
-            /* -webkit-background-clip: text; */
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* -moz-background-clip: text; */
+            -moz-background-clip: text;
             -moz-text-fill-color: transparent;
         }
     </style>
@@ -75,7 +75,7 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- Page Content-->
     <div data-bs-theme="dark" class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5" style="height: 100vh;">
@@ -88,7 +88,28 @@
 
     <div class="container py-4">
         <div class="p-5 mb-4 bg-light rounded-3">
-            <a href="https://aditya-chandraker.me/">adi</a>
+             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        Adi
+                    </div>
+                    <div class="carousel-item">
+                        My
+                    </div>
+                    <div class="carousel-item">
+                        A
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- <a href="https://aditya-chandraker.me/">adi</a> -->
         </div>
         <div class="row align-items-md-stretch mb-4 ">
             <div class="col-md-3" id="clicker-container">
@@ -100,8 +121,8 @@
                 <div class="h-100 p-5 bg-light border">
                     <h4 style="color: black;">QenA &nbsp;
                         <a href="https://qena.live">
-                            <button class="btn btn-outline-secondary"
-                                style="transform:translate(0,-2px)" type="button">Launch</button></h2>
+                            <button class="btn btn-outline-secondary" style="transform:translate(0,-2px)"
+                                type="button">Launch</button></h2>
                         </a>
                         <p>A replacement for the original iclicker system at UConn which didn't do quite enough.
                         </p>
@@ -117,8 +138,11 @@
             </div>
             <div class="col-md-9">
                 <div class="h-100 p-5 bg-light border">
-                    <h4 style="color: black;">LaundryConn &nbsp;<button class="btn btn-outline-secondary"
-                            style="transform:translate(0,-2px)" type="button">Launch</button></h2>
+                    <h4 style="color: black;">LaundryConn &nbsp;
+                        <a href="test.html">
+                            <button class="btn btn-outline-secondary"
+                                style="transform:translate(0,-2px)" type="button">Launch</button></h2>
+                        </a>
                         <p>A system to find out if a laundry machine is occupied.</p>
 
                 </div>
@@ -134,8 +158,8 @@
                 <div class="h-100 p-5 bg-light border">
                     <h4 style="color: black;">Goaltac &nbsp;
                         <a href="https://goaltac.net">
-                            <button class="btn btn-outline-secondary"
-                                style="transform:translate(0,-2px);" type="button">Launch</button></h2>
+                            <button class="btn btn-outline-secondary" style="transform:translate(0,-2px);"
+                                type="button">Launch</button></h2>
                         </a>
                         <p>A Social media platform that help people set goals and complete them</p>
 
