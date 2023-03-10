@@ -3,13 +3,14 @@ import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 
 // Load objects
+
 const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x73D7FF);
+scene.background = new THREE.Color(0x212429);
 const gltfLoader = new GLTFLoader();
 
 var env;
-gltfLoader.load("../assets/Environment.glb", function (glb) {
+gltfLoader.load("../assets/EnvironmentLaunchRoom.glb", function (glb) {
     env = glb.scene
     env.position.set(0, 0, 0);
     scene.add(env)
@@ -30,14 +31,6 @@ gltfLoader.load("../assets/Rocket_Holder.glb", function (glb) {
     roc_ho.position.set(0, 0, 0);
     scene.add(roc_ho);
 });
-var launch_room;
-gltfLoader.load("../assets/LaunchRoom.glb", function (glb) {
-    console.log(glb);
-    launch_room = glb.scene;
-    launch_room.position.set(0, 0, 0);
-    scene.add(launch_room);
-});
-
 
 var button;
 gltfLoader.load("../assets/LaunchButton.glb", function (glb) {
@@ -48,20 +41,34 @@ gltfLoader.load("../assets/LaunchButton.glb", function (glb) {
 });
 
 // Lights
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.25);
+scene.add(ambientLight);
+
 const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 2.5);
 directionalLight.position.set(-52.5, 80, -100)
 directionalLight.target.position.set(-52.5, 0, -100)
 scene.add(directionalLight);
-scene.add(directionalLight.target)
+scene.add(directionalLight.target);
 
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1);
-scene.add(ambientLight);
 
-const spotLight = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
-spotLight.position.set(-105, 80, -160)
-spotLight.target.position.set(-105, 50, -200)
-scene.add(spotLight)
-scene.add(spotLight.target)
+const spotLight2 = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
+spotLight2.position.set(-105, 80, -160)
+spotLight2.target.position.set(-105, 50, -200)
+scene.add(spotLight2);
+scene.add(spotLight2.target);
+
+const directionalLight2 = new THREE.DirectionalLight(0xFFFFFF, 0.5);
+directionalLight2.position.set(
+    127.4197346173197,
+    8.852875995173607,
+    -115.69718154158252)
+directionalLight.target.position.set(
+    127.4197346173197, 
+    0, 
+    -120.69718154158252)
+scene.add(directionalLight2);
+scene.add(directionalLight2.target);
+
 
 // Sizes
 const sizes = {
@@ -83,11 +90,12 @@ window.addEventListener("resize", () => {
 
 // Camera
 const camera = new THREE.PerspectiveCamera(
-    60,
+    50,
     sizes.width / sizes.height,
     0.1,
     500
 );
+
 camera.position.set(
     127.4197346173197,
     8.852875995173607,
@@ -99,12 +107,11 @@ controls.target.set(
     126.197346173197,
     8.852875995173607,
     -114.59718154158252);
-console.log(controls.target);
 controls.enableZoom = false;
 controls.update();
 
 // Fog
-scene.fog = new THREE.Fog()
+scene.fog = new THREE.FogExp2(0xD3D3D3, 0.005)
 
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
@@ -152,9 +159,6 @@ function expandSmoke() {
 // Change Camera Position to Lauch, and Shake
 function launchCamera() {
     controls.enabled = false
-    camera.position.x = 0
-    camera.position.y = 70
-    camera.position.z = 10
     camera.lookAt(roc.position)
 };
 
@@ -173,48 +177,63 @@ function restoreCamera() {
 };
 
 function CameraRight() {
-    camera.position.z -= 0.1
-    camera.position.x -= 0.1
+    camera.position.z -= Math.random() / 12
+    camera.position.x -= Math.random() / 12
 };
 
 function CameraLeft() {
-    camera.position.z += 0.2
-    camera.position.x += 0.2
+    camera.position.z += Math.random() / 12
+    camera.position.x += Math.random() / 12
 };
+function fixCamera() {
+    camera.position.set(
+    127.4197346173197,
+    8.852875995173607,
+    -115.69718154158252);
+}
 
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    roc.position.y += pos[j]
-    j += 1
+    j += 1;
+    if (j >= 320) {
+        if (roc_ho.rotation.x < 0.2) {
+            roc_ho.rotation.x += 0.001
+        };
+        roc.position.y += pos[j - 320]
+        if (j > 375) {
+            if (j < 1250) {
+                // move camera
+                launchCamera()
+                if (j % 6 == 0) {
+                    CameraRight()
+                }
+                else if (j % 6 == 2) {
+                    CameraLeft()
+                }
+                else if (j % 6 == 4) {
+                    fixCamera()
+                }
+            }
+            else if (j == 1250) {
+                restoreCamera()
+            };
+            if (j % 5 == 0) {
+                createParticle(0, Math.random() * 5);
+                createParticle(0, Math.random * -5);
+                createParticle(Math.random() * 5, 0);
+                createParticle(Math.random() * -5, 0);
+                createParticle(Math.random() * 5, Math.random() * 5);
+                createParticle(Math.random() * 5, Math.random() * -5);
+                createParticle(Math.random() * -5, Math.random() * -5);
+                createParticle(Math.random() * -5, Math.random() * 5);
+                expandSmoke();
+            };
 
-    if (240 < j && j < 560) {
-        // move camera
-        launchCamera()
-        if (j % 6 == 0) {
-            CameraRight()
-        }
-        else if (j % 6 == 2) {
-            CameraLeft()
-        }
-        else if (j % 6 == 4) {
-            CameraRight()
-        }
-    }
-    else if (j == 560) {
-        restoreCamera()
-    };
-
-    if (j > 140 && j % 5 === 0) {
-        createParticle(0, Math.random() * 5);
-        createParticle(0, Math.random * -5);
-        createParticle(Math.random() * 5, 0);
-        createParticle(Math.random() * -5, 0);
-        createParticle(Math.random() * 5, Math.random() * 5);
-        createParticle(Math.random() * 5, Math.random() * -5);
-        createParticle(Math.random() * -5, Math.random() * -5);
-        createParticle(Math.random() * -5, Math.random() * 5);
-        expandSmoke();
+            if (j == 2100) {
+                window.location.replace('../index.html')
+            };
+        };
     };
 };
 
