@@ -140,7 +140,8 @@ function createParticle(a, b) {
         particle = glb.scene
         particle.scale.set(2, 2, 2)
         particle.position.set(roc.position.x + a, roc.position.y + 8, roc.position.z + b);
-        scene.add(particle)
+        particle.color = new THREE.Color(0xFFFFFF);
+        scene.add(particle);
         smoke.push(particle);
     });
 }
