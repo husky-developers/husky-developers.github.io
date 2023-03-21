@@ -1,7 +1,7 @@
 const membersContainer = document.getElementById('membersContainer');
 const membersScrollWidth = membersContainer.scrollWidth;
 const membersWidth = membersContainer.clientWidth;
-let direction;
+let direction = 'L';
 
 window.addEventListener('load', () => {
   self.setInterval(() => {
