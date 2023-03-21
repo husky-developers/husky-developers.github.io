@@ -19,9 +19,9 @@ window.addEventListener('load', () => {
       direction = 'L'
       membersContainer.scrollTo(membersContainer.scrollLeft + .5, 0);
     }
-    console.log(direction);
-    console.log(membersContainer.scrollLeft);
-    console.log(membersScrollWidth - membersWidth);
-    console.log(membersScrollWidth);
+    // console.log(direction);
+    // console.log(membersContainer.scrollLeft);
+    // console.log(membersScrollWidth - membersWidth);
+    // console.log(membersScrollWidth);
   }, 15);
 });
