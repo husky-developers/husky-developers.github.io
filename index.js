@@ -6,7 +6,7 @@ let direction = 'L';
 window.addEventListener('load', () => {
   self.setInterval(() => {
     if (membersContainer.scrollLeft !== membersScrollWidth && direction == 'L') {
-      membersContainer.scrollTo(membersContainer.scrollLeft + .5, 0);
+      membersContainer.scrollTo(membersContainer.scrollLeft + 1, 0);
     }
     // else if (membersContainer.scrollLeft == membersScrollWidth - membersWidth) {
     //   direction = 'R'
