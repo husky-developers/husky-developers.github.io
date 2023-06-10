@@ -2,11 +2,23 @@ import { OrbitControls } from "https://unpkg.com/three@0.127.0/examples/jsm/cont
 import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.127.0/examples/jsm/loaders/GLTFLoader.js";
 
-// Load objects
+// function unfade(element) {
+//     var op = -.5;  // initial opacity
+//     element.style.display = 'block';
+//     var timer = setInterval(function () {
+//         if (op > 1 || op < 0) {
+//             clearInterval(timer);
+//         }
+//         element.style.opacity = op;
+//         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+//         op += 0.01;
+//     }, 10);
+// }
 
+// Load objectsF
 const canvas = document.querySelector(".webgl");
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x212429);
+// scene.background = new THREE.Color(0x212429);
 const gltfLoader = new GLTFLoader();
 
 var env;
@@ -44,14 +56,14 @@ gltfLoader.load("assets/LaunchButton.glb", function (glb) {
 const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.25);
 scene.add(ambientLight);
 
-const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 2.5);
+const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 5);
 directionalLight.position.set(-52.5, 80, -100)
 directionalLight.target.position.set(-52.5, 0, -100)
 scene.add(directionalLight);
 scene.add(directionalLight.target);
 
 
-const spotLight2 = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, .75);
+const spotLight2 = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 2, 1.75);
 spotLight2.position.set(-105, 80, -160)
 spotLight2.target.position.set(-105, 50, -200)
 scene.add(spotLight2);
@@ -234,12 +246,11 @@ function animate() {
             if (j == 2100) {
                 // window.location.replace('index.html')
                 // canvas.style.display = "none";
-                canvas.remove();
-                renderer.setAnimationLoop(null);
+                // renderer.setAnimationLoop(null);
+                // setTimeout(function () { renderer.setAnimationLoop(null); }, 1000000);
                 return;
             };
-
-            console.log(j)
+            // console.log(j)
         };
     };
 
