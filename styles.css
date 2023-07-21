@@ -1,127 +1,133 @@
 body {
-    margin: 0;
-    background-color: black;
+  margin: 0;
+  background-color: black;
 }
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 canvas {
-    position: relative;
+  position: relative;
 }
 
 button {
-    /* position: fixed; */
-    z-index: 999;
+  /* position: fixed; */
+  z-index: 999;
 }
 
 .scrolling-wrapper {
-    overflow-x: scroll;
+  overflow-x: scroll;
 }
 
 .scrolling-wrapper::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 h1 {
-    font-weight: 700;
-    font-size: 3.4em;
+  font-weight: 700;
+  font-size: 3.4em;
 }
 
 .space {
-    width: 19rem;
+  width: 19rem;
+  height: 19rem;
 }
 
 .card-block {
-    height: 300px;
-    width: 18rem;
-    background-color: #fff;
-    border: none;
-    background-position: center;
-    background-size: cover;
-    transition: all 0.2s ease-in-out !important;
-    border-radius: 24px;
+  height: 300px;
+  width: 18rem;
+  background-color: #fff;
+  border: none;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.2s ease-in-out !important;
+  border-radius: 24px;
 
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: none;
-        opacity: 0.9;
-        cursor: pointer;
-    }
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: none;
+    opacity: 0.9;
+    cursor: pointer;
+  }
 }
 
 .card-1 {
-    background-image: url("assets/images/renderAdi8.png");
+  background-image: url("assets/images/renderAdi8.png");
 }
 
 .card-2 {
-    background-image: url("assets/images/Juju.png");
+  background-image: url("assets/images/Juju.png");
 }
 
 .card-3 {
-    background-image: url("assets/images/My.png");
+  background-image: url("assets/images/My.png");
 }
 
 .card-4 {
-    background-color: #FBAB7E;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 }
 
 .card-5 {
-    background-color: #85FFBD;
-    background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
 }
 
 .card-6 {
-    background-color: #FA8BFF;
-    background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+  background-color: #fa8bff;
+  background-image: linear-gradient(
+    45deg,
+    #fa8bff 0%,
+    #2bd2ff 52%,
+    #2bff88 90%
+  );
 }
 
 .card-7 {
-    background-color: #FA8BFF;
-    background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+  background-color: #fa8bff;
+  background-image: linear-gradient(
+    45deg,
+    #fa8bff 0%,
+    #2bd2ff 52%,
+    #2bff88 90%
+  );
 }
 
 .card-8 {
-    background-color: #FBDA61;
-    background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+  background-color: #fbda61;
+  background-image: linear-gradient(45deg, #fbda61 0%, #ff5acd 100%);
 }
 
 .card-9 {
-    background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
 }
 
 .card-10 {
-    background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
-
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
 }
 
 #bottom {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
 }
 
-.gradient-text {
-    /* Fallback: Set a background color. */
-    background-color: blue;
-
-    /* Create the gradient. */
-    background-image: linear-gradient(45deg, #78d6f3, #4250af);
-
-    /* Set the background size and repeat properties. */
-    background-size: 100%;
-    background-repeat: repeat;
-
-    /* Use the text as a mask for the background. */
-    /* This will show the gradient as a text color rather than element bg. */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
+a {
+  display: none;
 }

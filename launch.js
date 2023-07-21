@@ -57,6 +57,11 @@ spotLight2.target.position.set(-105, 50, -200);
 scene.add(spotLight2);
 scene.add(spotLight2.target);
 
+const spotLight3 = new THREE.SpotLight(0xffe6ba, 5, 0, Math.PI / 2, 1.75);
+spotLight3.position.set(0, 10, 0);
+scene.add(spotLight3);
+
+
 const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
 directionalLight2.position.set(
   127.4197346173197,
@@ -102,7 +107,7 @@ controls.enableZoom = false;
 controls.update();
 
 // Fog
-scene.fog = new THREE.FogExp2(0xd3d3d3, 0.003);
+scene.fog = new THREE.FogExp2(0xd3d3d3, 0.0025);
 
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
@@ -124,7 +129,21 @@ for (let i = 0; i < 10; i += 0.01) {
 
 let j = 0;
 let smoke = [];
+let smokebackground = [];
 let smokeTail = [];
+
+function onFloor(particle) {
+  return particle.position.y < 5;
+}
+
+function isFar(particle) {
+  return (
+    particle.position.x < -50 ||
+    particle.position.x > 50 ||
+    particle.position.z < -50 ||
+    particle.position.z > 50
+  );
+}
 
 function createParticleInitial(a, b) {
   let particle;
@@ -139,8 +158,8 @@ function createParticleInitial(a, b) {
     scene.add(particle);
     smoke.push(particle);
 
-    // limits to only 144 particles on map at any point
-    if (smoke.length > 144) {
+    // limits to only 160 particles on map at any point
+    if (smoke.length > 160) {
       scene.remove(smoke.shift());
     }
     // particle.color = new THREE.Color(0x000000);
@@ -152,30 +171,29 @@ function moveParticlesInitial() {
     let particle = smoke[i];
 
     // modifiers 1-2
-    let randx = Math.random();
-    let randy = Math.random();
-    let randz = Math.random();
+    let randx = (Math.random() * 400) / (300 + smoke.length);
+    let randy = (Math.random() * 400) / (300 + smoke.length);
+    let randz = (Math.random() * 400) / (300 + smoke.length);
 
     let currentPosition = particle.position;
     let currentScale = particle.scale;
 
-    let newX = currentPosition.x * (randx / 10 + 1.15);
-    let newY = currentPosition.y;
-    let newZ = currentPosition.z * (randz / 10 + 1.15);
+    let newX, newY, newZ;
 
     let newscale = 1 + randx / 5;
+
+    if (isFar(particle)) {
+      newscale += 0.2;
+    } else {
+      newX = currentPosition.x * (randx / 10 + 1.15);
+      newY = currentPosition.y;
+      newZ = currentPosition.z * (randz / 10 + 1.15);
+    }
 
     if (onFloor(particle)) {
       newY += 1;
     } else {
       newY -= 2;
-    }
-
-    if (isFar(particle)) {
-      newY += 3 + randy * 2;
-      newX = currentPosition.x * (randx / 50 + 1);
-      newZ /= currentPosition.z * (randx / 50 + 1);
-      newscale += 0.2;
     }
 
     particle.position.set(newX, newY, newZ);
@@ -192,7 +210,7 @@ function createParticleAfter(a, b) {
   let particle;
   gltfLoader.load("assets/small_smoke.glb", function (glb) {
     particle = glb.scene;
-    particle.scale.set(2, 4, 2);
+    particle.scale.set(2, 3, 2);
     particle.position.set(
       roc.position.x + a,
       roc.position.y + 10,
@@ -223,7 +241,7 @@ function moveParticlesAfter() {
     let currentScale = particle.scale;
 
     let newX = currentPosition.x * (randx / 10 + 1);
-    let newY = currentPosition.y + 1;
+    let newY = currentPosition.y;
     let newZ = currentPosition.z * (randz / 10 + 1);
 
     let newscale = 1 + randx / 15;
@@ -249,7 +267,7 @@ function moveParticlesAfter() {
     let currentScale = particle.scale;
 
     let newX = currentPosition.x * (randx / 100 + 1);
-    let newY = currentPosition.y + .1;
+    let newY = currentPosition.y + 0.1;
     let newZ = currentPosition.z * (randz / 100 + 1);
 
     let newscale = 1 + randx / 100;
@@ -264,81 +282,26 @@ function moveParticlesAfter() {
   }
 }
 
-function onFloor(particle) {
-  return particle.position.y < 5;
-}
-
-function isFar(particle) {
-  return (
-    particle.position.x < -60 ||
-    particle.position.x > 60 ||
-    particle.position.z < -60 ||
-    particle.position.z > 60
-  );
-}
-
 function expandSmoke(state) {
   // Add smoke intial
-  if (state % 8 == 0) {
-    if (state < 600) {
+  if (state % 15 == 0) {
+    if (state < 800) {
       createParticleInitial(Math.random(), Math.random());
       createParticleInitial(Math.random() * -1, Math.random() * -1);
       createParticleInitial(Math.random() * -1, Math.random());
       createParticleInitial(Math.random(), Math.random() * -1);
-
-      moveParticlesInitial();
     }
+  }
 
+  if (state % 5 == 0) {
+    moveParticlesInitial();
     // add smoke after launch
     if (state > 600 && state < 1250) {
       createParticleAfter(0, 0);
-
       moveParticlesAfter();
     }
   }
 }
-
-// if (state == 600) {
-//   for (let i = 0; i < smoke.length; i++) {
-//     let particle = smoke[i];
-//     if (particle.position.x < 0 || particle.position.z > 0) {
-//       stayingsmoke.push(particle);
-//       smoke.splice(i, 1);
-//     } else {
-//       scene.remove(smoke.shift());
-//     }
-//   }
-// }
-// if (state > 600) {
-//   for (let i = 0; i < smoke.length - 8; i++) {
-//     scene.remove(smoke.shift());
-//   }
-// }
-
-// for (let i = 1; i < smoke.length; i++) {
-//   let particle;
-//   if (state < 600) {
-//     particle = smoke[i - 1];
-//   } else {
-//     particle = stayingsmoke[i - 1];
-//   }
-
-//   let randx = ((Math.random() * 2 - 1) * i) / 20;
-//   let randy = ((Math.random() * 2 - 1) * i) / 20;
-//   let randz = ((Math.random() * 2 - 1) * i) / 20;
-
-//   let currentPosition = particle.position;
-//   let newX2 = currentPosition.x + randx;
-//   let newY2 = currentPosition.y + randy / 16;
-//   let newZ2 = currentPosition.z + randz;
-//   particle.position.set(newX2, newY2, newZ2);
-
-//   let currentSize = particle.scale;
-//   let newX = currentSize.x + i / 50;
-//   let newY = currentSize.y + i / 150;
-//   let newZ = currentSize.z + i / 50;
-//   particle.scale.set(newX, newY, newZ);
-// }
 
 // After Launch -----------------------------------------------------------------
 function restoreCamera() {
@@ -360,7 +323,7 @@ function fadeIn(element, duration) {
       window.requestAnimationFrame(step);
     } else {
       typeWriter(directions, "<p> scroll to get started </p>", 100);
-      setTimeout(resetType, 3600);
+      setTimeout(resetType, 4000);
     }
   }
 
@@ -386,23 +349,26 @@ function resetType() {
   directions.style.fontFamily = "";
 }
 
-// Change Camera Position to Lauch, and Shake --------------------------------------------------------
-function launchCamera() {
+// Camera Shake --------------------------------------------------------------------------------------
+
+function shakeCamera(j) {
   controls.enabled = false;
   camera.lookAt(roc.position);
-}
 
-function CameraRight(taper) {
-  camera.position.z -= (Math.random() * 200) / taper;
-  camera.position.x -= (Math.random() * 200) / taper;
-}
+  let randomizer = Math.random() > 0.6;
 
-function CameraLeft(taper) {
-  camera.position.z += (Math.random() * 200) / taper;
-  camera.position.x += (Math.random() * 200) / taper;
-}
-function fixCamera() {
-  camera.position.set(127, 9, -116);
+  if (j % 3 == 0 && randomizer) {
+    // CameraRight
+    camera.position.z -= (Math.random() * 100) / j;
+    camera.position.x -= (Math.random() * 100) / j;
+  } else if (j % 3 == 1 && randomizer) {
+    // CameraLeft
+    camera.position.z += (Math.random() * 200) / j;
+    camera.position.x += (Math.random() * 200) / j;
+  } else {
+    // CameraCenter
+    camera.position.set(127, 9, -116);
+  }
 }
 
 // Launch --------------------------------------------------------------------------------------------
@@ -417,24 +383,12 @@ function animate() {
       roc_ho.rotation.x += 0.001;
     }
     roc.position.y += pos[j - 320];
+    spotLight3.position.y += pos[j - 320];
 
-    // camera shake
     if (j > 375 && j < 1250) {
-      // smoke
       expandSmoke(j);
+      shakeCamera(j);
 
-      // camera shake
-      launchCamera();
-
-      let randomizer = Math.random() > 0.6;
-
-      if (j % 3 == 0 && randomizer) {
-        CameraRight(j * 2);
-      } else if (j % 3 == 1 && randomizer) {
-        CameraLeft(j * 2);
-      } else {
-        fixCamera();
-      }
     } else if (j == 1250) {
       // stop everything
       renderer.setAnimationLoop(null);

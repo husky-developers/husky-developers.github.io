@@ -35,6 +35,16 @@
         async></script>
 
 
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+
+
+    <!-- Magic Scroll -->
+    <link rel="stylesheet" href="./assets/magicscroll/magicscroll.css" />
+    <script src="./assets/magicscroll/magicscroll.js"></script>
+
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -111,119 +121,85 @@
 
     <!-- After Launch -->
     <div class="afterLaunch" id="afterLaunch"
-        style="height: 90vh; display: none; justify-content: center; align-items: center; background-color: #000000;">
+        style="height: 90vh; display: none; justify-content: center; align-items: center;">
 
         <h1 style="font-size: 64px; font-weight: bold; padding: 1rem;">
             <!-- Welcome to <img src="assets/logos/title.jpg" style="padding-right: 20px;"> -->
             Welcome to Husky Developers
-            <p class="directions" style="font-size:32px; font-family: Consolas,sans-;"></p>
+            <p class="directions" style="font-size:32px; font-family: 'Source Code Pro', monospace;"></p>
         </h1>
 
     </div>
 
     <!-- Meet the Devs -->
-    <div class="container-fluid" id="meetDevs">
-        <h1 class="mt-5 px-2">Meet the Developers <p style="font-size: 20%;">&nbsp;(click on the tiles)
+    <div class="container-fluid mx-1" id="meetDevs">
+        <h1 class="mt-5" style="margin: left 50px;">Meet the Developers <p style="font-size: 20%">
+                &nbsp;(click on the tiles)
             </p>
         </h1>
-        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="membersContainer"
-            style="font-family: Consolas, sans; font-size:12px">
-
-            <!-- adi -->
-            <div class="col-5 space" onclick="location.href='https://aditya-chandraker.me';">
-                <div class="card card-block card-1">
-                    <div id="bottom">
-                        <h6 style="color: lightgrey; text-align: center;">President</h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- julian -->
-            <div class="col-5 space">
-                <div class="card card-block card-2">
-                    <div id="bottom">
-                        <h4 style="color: white; text-align: center;">
-                            Julian Setiadi
-                        </h4>
-                        <h6 style="color: lightgrey; text-align: center;">
-                            Vice President
-                        </h6>
-                    </div>
-                </div>
-            </div>
-
-            <!-- my -->
-            <div class="col-5 space">
-                <div class="card card-block card-3">
-                    <div id="bottom">
-                        <h4 style="color: white; text-align: center;">
-                            My Phung
-                        </h4>
-                        <h6 style="color: lightgrey; text-align: center;">
-                            Project Lead, Goaltac
-                        </h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-5 space">
-                <div class="card card-block card-4"></div>
-            </div>
-            <div class="col-5 space">
-                <div class="card card-block card-5"></div>
-            </div>
-            <div class="col-5 space">
-                <div class="card card-block card-6"></div>
-            </div>
-            <div class="col-5 space">
-                <div class="card card-block card-7"></div>
-            </div>
-            <div class="col-5 space">
-                <div class="card card-block card-8"></div>
-            </div>
-            <div class="col-5 space">
-                <div class="card card-block card-9"></div>
-            </div>
-            <div class="col-5 space">
-                <div class="card card-block card-10"></div>
-            </div>
-        </div>
     </div>
 
-    <!-- Auto Scroll-->
-    <script>
-        const membersContainer = document.getElementById('membersContainer');
-        const membersWidth = membersContainer.clientWidth;
-        let direction = 'L';
+    <div class="MagicScroll" id="membersContainer" data-options="step: 0; speed: 15000;;"
+        style="font-family: 'Source Code Pro', monospace; font-size:12px">
 
-        const observer = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting) {
-                // Load new content
-                membersContainer.innerHTML += '<div>New content</div>';
-            }
-        }, { threshold: 1 });
+        <!-- adi -->
+        <div class="col-5 space" onclick="location.href='https://aditya-chandraker.me';">
+            <div class="card card-block card-1">
+                <div id="bottom">
+                    <h6 style="color: lightgrey; text-align: center;">President</h6>
+                </div>
+            </div>
+        </div>
 
-        observer.observe(membersContainer.lastElementChild);
+        <!-- julian -->
+        <div class="col-5 space">
+            <div class="card card-block card-2">
+                <div id="bottom">
+                    <h4 style="color: white; text-align: center;">
+                        Julian Setiadi
+                    </h4>
+                    <h6 style="color: lightgrey; text-align: center;">
+                        Vice President
+                    </h6>
+                </div>
+            </div>
+        </div>
 
-        membersContainer.addEventListener('scroll', () => {
-            // Detect when the user has reached the end of the container
-            if (membersContainer.scrollLeft === membersContainer.scrollWidth) {
-                // Observe the last element to detect when it becomes visible
-                observer.observe(membersContainer.lastElementChild);
-                // Remove the first few elements
-                membersContainer.removeChild(membersContainer.firstElementChild);
-                // Reset the scroll position
-                membersContainer.scrollTo(0, 0);
-            }
-        });
-
-        window.addEventListener('load', () => {
-            setInterval(() => {
-                if (membersContainer.scrollLeft !== membersContainer.scrollWidth && direction == 'L') {
-                    membersContainer.scrollTo(membersContainer.scrollLeft + 1, 0);
-                }
-            }, 15);
-        });
-    </script>
+        <!-- my -->
+        <div class="col-5 space">
+            <div class="card card-block card-3">
+                <div id="bottom">
+                    <h4 style="color: white; text-align: center;">
+                        My Phung
+                    </h4>
+                    <h6 style="color: lightgrey; text-align: center;">
+                        Project Lead, Goaltac
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-5 space">
+            <div class="card card-block card-4"></div>
+        </div>
+        <div class="col-5 space">
+            <div class="card card-block card-5"></div>
+        </div>
+        <div class="col-5 space">
+            <div class="card card-block card-6"></div>
+        </div>
+        <div class="col-5 space">
+            <div class="card card-block card-7"></div>
+        </div>
+        <div class="col-5 space">
+            <div class="card card-block card-8"></div>
+        </div>
+        <div class="col-5 space">
+            <div class="card card-block card-9"></div>
+        </div>
+        <div class="col-5 space">
+            <div class="card card-block card-10"></div>
+        </div>
+    </div>
 
     <!--Projects -->
     <div id="album" class="album py-1 px-2" style="margin-bottom: 50px;">
@@ -232,7 +208,7 @@
 
 
             <div class="row" data-masonry='{"percentPosition": true }'
-                style="font-family: Consolas, sans; font-size:12px">
+                style="font-family: 'Source Code Pro', monospace; font-size:12px">
 
                 <!-- goaltac -->
                 <div class="col-sm-6 col-lg-4 mb-4">
