@@ -2,11 +2,15 @@
 <html lang="en" id="html-doc" data-bs-theme="dark">
 
 <head>
+    <!-- Required meta tags for google searches-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="husky developers uconn website" />
+    <meta name="author" content="aditya-chandraker" />
+
+    <!-- changes title of webpage-->
     <title>Husky Developers</title>
+
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
 
@@ -24,108 +28,117 @@
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 
+
+    <!-- masonry layout -->
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
+        async></script>
+
+
     <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body id="body">
+
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #000000;" id="navbar-page">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand fw-bold gradient-text">Husky Developers</a>
+        <div class="container px-4">
+
+            <!-- Navbar Title-->
+            <img src="assets/logos/title.jpg" style="height: 35px; padding-right: 20px;">
+
+            <!-- Navbar Toggler-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
                     class="navbar-toggler-icon"></span></button>
+
+            <!-- Navbar Links-->
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
-                            href="https://discord.com/invite/5mBWuRhrnH">Discord</a>
+                <ul class="navbar-nav ml-auto" style="font-family: Consolas,sans-;">
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey;" href="https://discord.com/invite/5mBWuRhrnH">
+                            Discord
+                        </a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
-                            href="https://www.instagram.com/huskydevelopers/">Instagram</a></li>
-                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
-                            href="https://uconntact.uconn.edu/organization/huskydevelopers">UConntact</a></li>
-                    <li class="nav-item"><a class="nav-link" style="color: lightgrey;"
-                            href="html_pages/test.html">&copy;
-                            2022</a></li>
-                    <li class="nav-item">&nbsp;&nbsp;<button class="btn btn-outline-secondary"
-                            onclick="toggleDarkMode()"><i class="ri-sun-line"></i></button>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey;" href="https://www.instagram.com/huskydevelopers/">
+                            Instagram
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey;"
+                            href="https://uconntact.uconn.edu/organization/huskydevelopers">
+                            UConntact
+                        </a>
+                    </li>
+
+                    <!-- darkmode -->
+                    <li class="nav-item">&nbsp;&nbsp;
+                        <button class="btn btn-outline-secondary" onclick="toggleDarkMode()">
+                            <i class="ri-sun-line"></i>
+                        </button>
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
 
-
-    <canvas class="webgl"></canvas>
-    <script type="module" src="js/launch.js"></script>
+    <!-- Dark Mode -->
     <script>
         let darkmode = false;
 
         function toggleDarkMode() {
             if (darkmode) {
                 document.getElementById("html-doc").setAttribute("data-bs-theme", "dark");
+                document.getElementById("body").style.backgroundColor = "#000000";
+
             } else {
                 document.getElementById("html-doc").setAttribute("data-bs-theme", "light");
+                document.getElementById("body").style.backgroundColor = "#efefef";
+
             }
             darkmode = !darkmode;
         }
-
-        function openModal(message) {
-            const modal = document.createElement('div');
-            modal.classList.add('modal');
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>${message}</p>
-                </div>
-            `;
-            document.body.appendChild(modal);
-
-            const closeButton = modal.querySelector('.close');
-            closeButton.addEventListener('click', () => {
-                modal.remove();
-            });
-        }
     </script>
 
-    <!-- Page Content-->
-    <div class="col-lg-6" id="welcome-page" style="position: absolute; top: 0;left: 15px;">
-        <h1 class="display-1 fw-bold pt-1 gradient-text">Welcome</h1>
-        <h4 class="text-muted">We are a UConn Web Dev Club.</h4>
+    <!-- Launch -->
+    <canvas class="webgl"></canvas>
+    <script type="module" src="launch.js"></script>
+
+    <!-- After Launch -->
+    <div class="afterLaunch" id="afterLaunch"
+        style="height: 90vh; display: none; justify-content: center; align-items: center; background-color: #000000;">
+
+        <h1 style="font-size: 64px; font-weight: bold; padding: 1rem;">
+            <!-- Welcome to <img src="assets/logos/title.jpg" style="padding-right: 20px;"> -->
+            Welcome to Husky Developers
+            <p class="directions" style="font-size:32px; font-family: Consolas,sans-;"></p>
+        </h1>
+
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container-fluid">
-        <h1 class="mt-5" style="padding-left: 100px">Meet the Developers <p style="font-size: 20%;">(click on the tiles)
+    <!-- Meet the Devs -->
+    <div class="container-fluid" id="meetDevs">
+        <h1 class="mt-5 px-2">Meet the Developers <p style="font-size: 20%;">&nbsp;(click on the tiles)
             </p>
         </h1>
-        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="membersContainer">
+        <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2" id="membersContainer"
+            style="font-family: Consolas, sans; font-size:12px">
+
+            <!-- adi -->
             <div class="col-5 space" onclick="location.href='https://aditya-chandraker.me';">
                 <div class="card card-block card-1">
                     <div id="bottom">
-                        <h6 style="color: lightgrey; text-align: center;">
-                            President
-                        </h6>
+                        <h6 style="color: lightgrey; text-align: center;">President</h6>
                     </div>
                 </div>
             </div>
+
+            <!-- julian -->
             <div class="col-5 space">
                 <div class="card card-block card-2">
                     <div id="bottom">
@@ -133,11 +146,13 @@
                             Julian Setiadi
                         </h4>
                         <h6 style="color: lightgrey; text-align: center;">
-                            Treasurer
+                            Vice President
                         </h6>
                     </div>
                 </div>
             </div>
+
+            <!-- my -->
             <div class="col-5 space">
                 <div class="card card-block card-3">
                     <div id="bottom">
@@ -150,157 +165,158 @@
                     </div>
                 </div>
             </div>
-            <div class="col-5">
-                <h1>more to come...</h1>
-            </div>
-            <!-- <div class="col-5">
+            <div class="col-5 space">
                 <div class="card card-block card-4"></div>
             </div>
-            <div class="col-5">
+            <div class="col-5 space">
                 <div class="card card-block card-5"></div>
             </div>
-            <div class="col-5">
+            <div class="col-5 space">
                 <div class="card card-block card-6"></div>
             </div>
-            <div class="col-5">
+            <div class="col-5 space">
                 <div class="card card-block card-7"></div>
             </div>
-            <div class="col-5">
+            <div class="col-5 space">
                 <div class="card card-block card-8"></div>
             </div>
-            <div class="col-5">
+            <div class="col-5 space">
                 <div class="card card-block card-9"></div>
             </div>
-            <div class="col-5">
+            <div class="col-5 space">
                 <div class="card card-block card-10"></div>
-            </div> -->
+            </div>
         </div>
     </div>
 
-    <div class="album py-1 bg-light">
-        <h1 class="mt-5" style="padding-left: 100px; padding-bottom: 15px ;">Our Projects </h1>
-        <div class="container">
+    <!-- Auto Scroll-->
+    <script>
+        const membersContainer = document.getElementById('membersContainer');
+        const membersWidth = membersContainer.clientWidth;
+        let direction = 'L';
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="assets/logos/goaltac.png" alt="Goaltac Logo">
+        const observer = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting) {
+                // Load new content
+                membersContainer.innerHTML += '<div>New content</div>';
+            }
+        }, { threshold: 1 });
 
-                        <div class="card-body" style="background-color: #000000;">
-                            <p class="card-text">A social media platform that help people set goals and complete them.
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        onclick='window.open("https://goaltac.net")'>Launch</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        style="background-color: rgba(0, 255, 0, 0.4);">Code</button>
-                                </div>
-                                <small class="text-muted" onclick="openModal('adi')">Developers</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="assets/logos/qena.png" alt="QenA Logo">
-                        <div class="card-body" style="background-color: #000000;">
-                            <p class="card-text">replacement for the original iClicker system at UConn which didn't do
-                                quite enough.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        onclick='window.open("https://qena.live")'>Launch</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        style="background-color: rgba(0, 255, 0, 0.4);">Code</button>
-                                </div>
-                                <small class="text-muted" onclick="openModal('adi')">Developers</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="assets/images/husky-dev-logo.jpg" alt="QenA Logo">
+        observer.observe(membersContainer.lastElementChild);
 
-                        <div class="card-body" style="background-color: #000000;">
-                            <p class="card-text">husky-developers site</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Launch</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        onclick='window.open("https://github.com/husky-developers")'
-                                        style="background-color: rgba(0, 255, 0, 0.4);">Code</button>
-                                </div>
-                                <small class="text-muted" onclick="openModal('adi')">Developers</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        membersContainer.addEventListener('scroll', () => {
+            // Detect when the user has reached the end of the container
+            if (membersContainer.scrollLeft === membersContainer.scrollWidth) {
+                // Observe the last element to detect when it becomes visible
+                observer.observe(membersContainer.lastElementChild);
+                // Remove the first few elements
+                membersContainer.removeChild(membersContainer.firstElementChild);
+                // Reset the scroll position
+                membersContainer.scrollTo(0, 0);
+            }
+        });
 
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em">Thumbnail</text>
-                        </svg>
+        window.addEventListener('load', () => {
+            setInterval(() => {
+                if (membersContainer.scrollLeft !== membersContainer.scrollWidth && direction == 'L') {
+                    membersContainer.scrollTo(membersContainer.scrollLeft + 1, 0);
+                }
+            }, 15);
+        });
+    </script>
 
-                        <div class="card-body" style="background-color: #000000;">
-                            <p class="card-text">LaundryConn (coming soon...)</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Launch</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        style="background-color: rgba(0, 255, 0, 0.4);">Code</button>
-                                </div>
-                                <small class="text-muted" onclick="openModal('adi')">Developers</small>
-                            </div>
+    <!--Projects -->
+    <div id="album" class="album py-1 px-2" style="margin-bottom: 50px;">
+        <div class="container-fluid">
+            <h1 class="mt-5" style="padding-bottom: 15px;">Projects and History</h1>
+
+
+            <div class="row" data-masonry='{"percentPosition": true }'
+                style="font-family: Consolas, sans; font-size:12px">
+
+                <!-- goaltac -->
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card" style="background-color:#ffffff">
+                        <img class="bd-placeholder-img card-img-top" src="assets/logos/goaltac.jpg" alt="Goaltac Logo"
+                            style="cursor: pointer;" onclick='window.open("https://goaltac.net")' />
+
+                        <div class="card-body" style="color:#000000">
+                            <h5 class="card-title">Goaltac</h5>
+                            <p>A social media platform that help people set goals and complete them.</p>
+                            <p>Node.js&nbsp;&nbsp;React&nbsp;&nbsp;Supabase&nbsp;&nbsp;ChakraUI</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                            preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em">Thumbnail</text>
-                        </svg>
+                <!-- qena -->
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card" style="background-color:#000000;">
+                        <img class="bd-placeholder-img card-img-top" src="assets/logos/qena.jpg" alt="QenA Logo"
+                            style="cursor: pointer;" onclick='window.open("https://qena.live")' />
 
-                        <div class="card-body" style="background-color: #000000;">
-                            <p class="card-text">UConn FitCheck (coming soon...)</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Launch</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        style="background-color: rgba(0, 255, 0, 0.4);">Code</button>
-                                </div>
-                                <small class="text-muted" onclick="openModal('adi')">Developers</small>
-                            </div>
+                        <div class="card-body" style="color: white">
+                            <h5 class="card-title">QenA</h5>
+                            <p>replacement for the original iClicker system at UConn which didn't do quite enough.</p>
+                            <p>Node.js&nbsp;&nbsp;React&nbsp;&nbsp;Supabase&nbsp;&nbsp;ChakraUI</p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- club website -->
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card" style="background-color:#09003F">
+                        <img class="bd-placeholder-img card-img-top" src="assets/logos/husky-dev.jpg" />
+
+                        <div class="card-body" style="color:#0A71A6">
+                            <h5 class="card-title">Club Website</h5>
+                            <p>A portfolio to showcase our efforts</p>
+                            <p>HTML&nbsp;&nbsp;THREE.js&nbsp;&nbsp;Bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- laundryconn -->
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card" style="background-color: #1F2428;">
+                        <img class="bd-placeholder-img card-img-top" src="assets/logos/laundryconn.jpg"
+                            alt="LaundryConn Logo" onclick='window.open("https://laundryconn.com")'
+                            style="cursor: pointer;" />
+
+                        <div class="card-body" style="color:#BBCACF">
+                            <h5 class="card-title">LaundryConn</h5>
+                            <p>Gives info when the laundry machines are in use (using vibration sensors and raspberry
+                                pi)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- fitcheck -->
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card" style="background-color: #ffffff;">
+                        <img class="bd-placeholder-img card-img-top" src="assets/logos/fitcheck.jpg" alt="FitCheck Logo"
+                            onclick='window.open("https://fitcheck.fashion")' style="cursor: pointer;" />
+
+                        <div class="card-body" style="color:#000000">
+                            <h5 class="card-title">FitCheck</h5>
+                            <p>Reviewing Fashion</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- hackathon -->
+                <div class="col-sm-6 col-lg-4 mb-4"
+                    onclick='window.open("https://www.business.uconn.edu/2023/02/21/otis-innovation-hackathon-prompts-undergrads-to-leverage-emerging-tech/")'
+                    style="cursor: pointer;">
+                    <div class="card">
+                        <img src="./assets/images/otisHackathon.jpg">
                     </div>
                 </div>
 
             </div>
         </div>
-        <br /><br />
-        <br /><br />
-        <br /><br />
+
     </div>
 
-    <!-- Bootstrap core JS-->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <!-- Scroll JS-->
-    <script src="index.js"></script>
-    <!-- Three JS files
-    <script type="module" src="js/laundry.js"></script>
-    <script type="module" src="js/clickerRemote.js"></script>
-    <script type="module" src="js/dartboard.js"></script> -->
 </body>
 
 </html>
