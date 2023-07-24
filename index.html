@@ -29,13 +29,13 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
 
 
-    <!-- masonry layout -->
+    <!-- Masonry Layout -->
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
         integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
         async></script>
 
 
-    <!-- fonts -->
+    <!-- Source Code Pro font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
@@ -64,22 +64,24 @@
 
             <!-- Navbar Links-->
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto" style="font-family: Consolas,sans-;">
+                <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgrey;" href="https://discord.com/invite/5mBWuRhrnH">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="https://discord.com/invite/5mBWuRhrnH">
                             Discord
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgrey;" href="https://www.instagram.com/huskydevelopers/">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="https://www.instagram.com/huskydevelopers/">
                             Instagram
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" style="color: lightgrey;"
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
                             href="https://uconntact.uconn.edu/organization/huskydevelopers">
                             UConntact
                         </a>
@@ -132,94 +134,124 @@
     </div>
 
     <!-- Meet the Devs -->
-    <div class="container-fluid mx-1" id="meetDevs">
-        <h1 class="mt-5" style="margin: left 50px;">Meet the Developers <p style="font-size: 20%">
-                &nbsp;(click on the tiles)
-            </p>
+    <div class="container-fluid mx-1">
+        <h1 class="mt-5">
+            Meet the Developers
+            <p style="font-size: 20%"> &nbsp;(double click the tiles) </p>
         </h1>
     </div>
 
-    <div class="MagicScroll" id="membersContainer" data-options="step: 0; speed: 15000;;"
+    <div class="MagicScroll" id="membersContainer" data-options="step: 0; speed: 15000;"
         style="font-family: 'Source Code Pro', monospace; font-size:12px">
-
-        <!-- adi -->
-        <div class="col-5 space" onclick="location.href='https://aditya-chandraker.me';">
-            <div class="card card-block card-1">
-                <div id="bottom">
-                    <h6 style="color: lightgrey; text-align: center;">President</h6>
-                </div>
-            </div>
-        </div>
-
-        <!-- julian -->
-        <div class="col-5 space">
-            <div class="card card-block card-2">
-                <div id="bottom">
-                    <h4 style="color: white; text-align: center;">
-                        Julian Setiadi
-                    </h4>
-                    <h6 style="color: lightgrey; text-align: center;">
-                        Vice President
-                    </h6>
-                </div>
-            </div>
-        </div>
-
-        <!-- my -->
-        <div class="col-5 space">
-            <div class="card card-block card-3">
-                <div id="bottom">
-                    <h4 style="color: white; text-align: center;">
-                        My Phung
-                    </h4>
-                    <h6 style="color: lightgrey; text-align: center;">
-                        Project Lead, Goaltac
-                    </h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-5 space">
-            <div class="card card-block card-4"></div>
-        </div>
-        <div class="col-5 space">
-            <div class="card card-block card-5"></div>
-        </div>
-        <div class="col-5 space">
-            <div class="card card-block card-6"></div>
-        </div>
-        <div class="col-5 space">
-            <div class="card card-block card-7"></div>
-        </div>
-        <div class="col-5 space">
-            <div class="card card-block card-8"></div>
-        </div>
-        <div class="col-5 space">
-            <div class="card card-block card-9"></div>
-        </div>
-        <div class="col-5 space">
-            <div class="card card-block card-10"></div>
-        </div>
     </div>
 
+    <!-- Puts the people in the slideshow -->
+    <script>
+        const data = [
+            { name: '', role: 'President', website: 'https://aditya-chandraker.me', image: "assets/images/renderAdi8.png" },
+            { name: 'Julian Setiadi', role: 'Vice President', website: 'https://www.google.com', image: "assets/images/Juju.png" },
+            { name: 'My Phung', role: 'Project Lead, Goaltac', image: "assets/images/My.png" },
+            { name: 'Keerthi', role: 'Secretary' },
+            { name: 'Ibrahima', role: 'Treasurer' },
+            { name: 'Nikhil Ghosh', role: 'Member' },
+            { name: 'AJ', role: 'Member' },
+            { name: 'John Ruffell', role: 'Member' },
+            { name: 'Gianna Rivera', role: 'Project Lead, Fitcheck' },
+            { name: 'Colin', role: 'Member' },
+            { name: 'Sebastian', role: 'Member' },
+            { name: 'Alex', role: 'Member' },
+            { name: 'Megan Sidmore', role: 'Member' },
+            { name: 'Aayush', role: 'Member' },
+            { name: 'Andrew', role: 'Member' },
+            { name: 'Mayur', role: 'Member' },
+            { name: 'Ryan', role: 'Member' },
+            { name: 'Mark Lu', role: 'Member' },
+        ];
+
+        const membersContainer = document.getElementById('membersContainer');
+
+        // maps the data
+        data.forEach((member, index) => {
+            const card = document.createElement('div');
+            card.classList.add('col-5', 'space');
+
+            // double click for personal portfolio website
+            if (member.website)
+                card.ondblclick = () => { location.href = member.website; };
+
+            // styling with name 
+            const cardBlock = document.createElement('div');
+            cardBlock.classList.add('card', 'card-block');
+            if (member.image)
+                cardBlock.style.backgroundImage = `url(${member.image})`;
+
+            // syling with role and name text
+            const bottom = document.createElement('div');
+            bottom.id = 'bottom';
+
+            const name = document.createElement('h4');
+            name.style.color = 'black';
+            name.style.textAlign = 'center';
+            name.textContent = member.name;
+
+            const role = document.createElement('h6');
+            role.style.color = 'lightgrey';
+            role.style.textAlign = 'center';
+            role.textContent = member.role;
+
+            // appending
+            card.appendChild(cardBlock);
+            cardBlock.appendChild(bottom);
+            bottom.appendChild(name);
+            bottom.appendChild(role);
+            membersContainer.appendChild(card);
+        });
+    </script>
+
     <!--Projects -->
-    <div id="album" class="album py-1 px-2" style="margin-bottom: 50px;">
+
+    <div class="container-fluid mx-1">
+        <h1 class="mt-5">Projects and History</h1>
+    </div>
+
+    <div id="album" class="album p-2" style="margin-bottom: 50px;">
         <div class="container-fluid">
-            <h1 class="mt-5" style="padding-bottom: 15px;">Projects and History</h1>
-
-
             <div class="row" data-masonry='{"percentPosition": true }'
                 style="font-family: 'Source Code Pro', monospace; font-size:12px">
 
                 <!-- goaltac -->
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card" style="background-color:#ffffff">
-                        <img class="bd-placeholder-img card-img-top" src="assets/logos/goaltac.jpg" alt="Goaltac Logo"
-                            style="cursor: pointer;" onclick='window.open("https://goaltac.net")' />
 
-                        <div class="card-body" style="color:#000000">
-                            <h5 class="card-title">Goaltac</h5>
-                            <p>A social media platform that help people set goals and complete them.</p>
-                            <p>Node.js&nbsp;&nbsp;React&nbsp;&nbsp;Supabase&nbsp;&nbsp;ChakraUI</p>
+                        <!-- Hamburger Menu -->
+                        <div class="menu-icon" onclick="toggleVisibility('goaltac')"
+                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
+                            <div style=" width: 24px;height: 3px;background-color: #000000;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
+                        </div>
+
+                        <!-- Hidden info -->
+                        <div id="hidden-goaltac" style="display: none; padding: 15px">
+                            Project Lead: My Phung<br />
+                            Second in Command: Nikhil Ghosh & Aditya Chandraker
+                        </div>
+
+                        <!-- Visible info (Default) -->
+                        <div id="hide-goaltac">
+
+                            <!-- Top image -->
+                            <img class="bd-placeholder-img card-img-top" src="assets/logos/goaltac.jpg"
+                                alt="Goaltac Logo" style="cursor: pointer;"
+                                onclick='window.open("https://goaltac.net")' />
+
+                            <!-- Description -->
+                            <div class="card-body" style="color:#000000">
+                                <h5 class="card-title">Goaltac</h5>
+                                <p>A social media platform that help people set goals and complete them.</p>
+                                <p>Node.js&nbsp;&nbsp;React&nbsp;&nbsp;Supabase&nbsp;&nbsp;ChakraUI</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -227,13 +259,29 @@
                 <!-- qena -->
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card" style="background-color:#000000;">
-                        <img class="bd-placeholder-img card-img-top" src="assets/logos/qena.jpg" alt="QenA Logo"
-                            style="cursor: pointer;" onclick='window.open("https://qena.live")' />
 
-                        <div class="card-body" style="color: white">
-                            <h5 class="card-title">QenA</h5>
-                            <p>replacement for the original iClicker system at UConn which didn't do quite enough.</p>
-                            <p>Node.js&nbsp;&nbsp;React&nbsp;&nbsp;Supabase&nbsp;&nbsp;ChakraUI</p>
+                        <div class="menu-icon" onclick="toggleVisibility('qena')"
+                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
+                            <div style=" width: 24px;height: 3px;background-color: #ffffff;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #ffffff;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #ffffff;"></div>
+                        </div>
+
+                        <div id="hidden-qena" style="display: none; padding: 15px">
+                            Project Lead: Aditya Chandraker<br />
+                            Second in Command: John Ruffell and Sebastian
+                        </div>
+
+                        <div id="hide-qena">
+                            <img class="bd-placeholder-img card-img-top" src="assets/logos/qena.jpg" alt="QenA Logo"
+                                style="cursor: pointer;" onclick='window.open("https://qena.live")' />
+
+                            <div class="card-body" style="color: white">
+                                <h5 class="card-title">QenA</h5>
+                                <p>replacement for the original iClicker system at UConn which didn't do quite enough.
+                                </p>
+                                <p>Node.js&nbsp;&nbsp;React&nbsp;&nbsp;Supabase&nbsp;&nbsp;ChakraUI</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,12 +289,27 @@
                 <!-- club website -->
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card" style="background-color:#09003F">
-                        <img class="bd-placeholder-img card-img-top" src="assets/logos/husky-dev.jpg" />
 
-                        <div class="card-body" style="color:#0A71A6">
-                            <h5 class="card-title">Club Website</h5>
-                            <p>A portfolio to showcase our efforts</p>
-                            <p>HTML&nbsp;&nbsp;THREE.js&nbsp;&nbsp;Bootstrap</p>
+                        <div class="menu-icon" onclick="toggleVisibility('club')"
+                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
+                            <div style=" width: 24px;height: 3px;background-color: #ffffff;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #ffffff;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #ffffff;"></div>
+                        </div>
+
+                        <div id="hidden-club" style="display: none; padding: 15px">
+                            Project Lead: Aditya Chandraker<br />
+                            Second in Command: John Ruffell and AJ
+                        </div>
+
+                        <div id="hide-club">
+                            <img class="bd-placeholder-img card-img-top" src="assets/logos/husky-dev.jpg" />
+
+                            <div class="card-body" style="color:#0A71A6">
+                                <h5 class="card-title">Club Website</h5>
+                                <p>A portfolio to showcase our efforts</p>
+                                <p>HTML&nbsp;&nbsp;THREE.js&nbsp;&nbsp;Bootstrap</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -254,14 +317,32 @@
                 <!-- laundryconn -->
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card" style="background-color: #1F2428;">
-                        <img class="bd-placeholder-img card-img-top" src="assets/logos/laundryconn.jpg"
-                            alt="LaundryConn Logo" onclick='window.open("https://laundryconn.com")'
-                            style="cursor: pointer;" />
 
-                        <div class="card-body" style="color:#BBCACF">
-                            <h5 class="card-title">LaundryConn</h5>
-                            <p>Gives info when the laundry machines are in use (using vibration sensors and raspberry
-                                pi)</p>
+                        <div class="menu-icon" onclick="toggleVisibility('laundryconn')"
+                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
+                            <div style=" width: 24px;height: 3px;background-color: #ffffff;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #ffffff;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #ffffff;"></div>
+                        </div>
+
+                        <div id="hidden-laundryconn" style="display: none; padding: 15px">
+                            Project Lead: Aditya Chandraker<br />
+                            Second in Command: Gianna Rivera<br />
+                            Members: Mark Lu and Aayush
+                        </div>
+
+                        <div id="hide-laundryconn">
+                            <img class="bd-placeholder-img card-img-top" src="assets/logos/laundryconn.jpg"
+                                alt="LaundryConn Logo" onclick='window.open("https://laundryconn.com")'
+                                style="cursor: pointer;" />
+
+                            <div class="card-body" style="color:#BBCACF">
+                                <h5 class="card-title">LaundryConn</h5>
+                                <p>Gives info when the laundry machines are in use (using vibration sensors and
+                                    raspberry
+                                    pi)</p>
+                                <p>Raspberry Pi&nbsp;&nbsp;React Native&nbsp;&nbsp;Firebase</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -269,29 +350,75 @@
                 <!-- fitcheck -->
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card" style="background-color: #ffffff;">
-                        <img class="bd-placeholder-img card-img-top" src="assets/logos/fitcheck.jpg" alt="FitCheck Logo"
-                            onclick='window.open("https://fitcheck.fashion")' style="cursor: pointer;" />
 
-                        <div class="card-body" style="color:#000000">
-                            <h5 class="card-title">FitCheck</h5>
-                            <p>Reviewing Fashion</p>
+                        <div class="menu-icon" onclick="toggleVisibility('fitcheck')"
+                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
+                            <div style=" width: 24px;height: 3px;background-color: #000000;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
+                        </div>
+
+                        <div id="hidden-fitcheck" style="display: none; padding: 15px">
+                            Project Lead: Gianna Rivera<br />
+                            Second in Command: Aditya Chandraker
+                        </div>
+
+                        <div id="hide-fitcheck">
+                            <img class="bd-placeholder-img card-img-top" src="assets/logos/fitcheck.jpg"
+                                alt="FitCheck Logo" onclick='window.open("https://fitcheck.fashion")'
+                                style="cursor: pointer" />
+
+                            <div class="card-body" style="color:#000000">
+                                <h5 class="card-title">FitCheck</h5>
+                                <p>Reviewing Fashion</p>
+                                <p>React Native&nbsp;&nbsp;Firebase</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- hackathon -->
-                <div class="col-sm-6 col-lg-4 mb-4"
-                    onclick='window.open("https://www.business.uconn.edu/2023/02/21/otis-innovation-hackathon-prompts-undergrads-to-leverage-emerging-tech/")'
-                    style="cursor: pointer;">
-                    <div class="card">
-                        <img src="./assets/images/otisHackathon.jpg">
-                    </div>
+                <div class="col-sm-6 col-lg-4 mb-4"">
+                    <!-- <div class="card"> -->
+                        <div class="menu-icon" onclick="toggleVisibility('hackathon')"
+                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
+                            <div style=" width: 24px;height: 3px;background-color: #ffffff;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #ffffff;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #ffffff;"></div>
+                        </div>
+
+                        <div id="hidden-hackathon" style="display: none; padding: 15px">
+                            1st Place: Aditya Chandraker<br />
+                            2nd Place: Julian, Ibrahima, & Aayush<br />
+                            3rd Place: Ryan<br />
+                        </div>
+
+                        <div id="hide-hackathon">
+                            <img src="./assets/images/otisHackathon.jpg" style="width: 19rem; cursor: pointer;" alt="hackathon" 
+                                onclick='window.open("https://www.business.uconn.edu/2023/02/21/otis-innovation-hackathon-prompts-undergrads-to-leverage-emerging-tech/")'>
+                        </div>
+                    <!-- </div> -->
                 </div>
 
             </div>
         </div>
 
     </div>
+
+    <script>
+        function toggleVisibility(elementId) {
+            const elementHide = document.getElementById(`hide-${elementId}`);
+            const elementHidden = document.getElementById(`hidden-${elementId}`);
+
+            if (elementHide.style.display === "none") {
+                elementHide.style.display = "";
+                elementHidden.style.display = "none";
+            } else {
+                elementHide.style.display = "none";
+                elementHidden.style.display = "";
+            }
+        }
+    </script>
 
 </body>
 
