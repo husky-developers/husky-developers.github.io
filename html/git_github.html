@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" id="html-doc">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git and GitHub Tutorial</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/logos/husky-dev_padding.jpg" />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <!-- Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Source Code Pro font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+
+<body id="body" style="color: gray">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #000000;" id="navbar-page">
+        <div class="container px-4">
+
+            <!-- Navbar Title-->
+            <a href="../" style="display: block;">
+                <img src="../assets/logos/title.jpg" style="height: 35px; padding-right: 20px;">
+            </a>
+
+            <!-- Navbar Toggler-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+
+            <!-- Navbar Links-->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="https://discord.gg/f8bgHjehb7">
+                            Discord
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="https://www.instagram.com/huskydevelopers/">
+                            Instagram
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="https://uconntact.uconn.edu/organization/huskydevelopers">
+                            UConntact
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="../html/documentation.html">
+                            Documentation
+                        </a>
+                    </li>
+
+                    <!-- darkmode -->
+                    <li class="nav-item">&nbsp;&nbsp;
+                        <button class="btn btn-outline-secondary" onclick="toggleDarkMode()">
+                            <i class="ri-sun-line"></i>
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dark Mode -->
+    <script>
+        let darkmode = false;
+
+        function toggleDarkMode() {
+            if (darkmode) {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "dark");
+                document.getElementById("body").style.backgroundColor = "#000000";
+
+            } else {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "light");
+                document.getElementById("body").style.backgroundColor = "#efefef";
+
+            }
+            darkmode = !darkmode;
+        }
+    </script>
+
+    <div class="container">
+        <h1 class="mt-5">Git and GitHub Tutorial</h1>
+
+        <img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git Icon"
+            style="position: absolute; top: 10px; right: 10px; width: 20%;">
+
+        <h2 class="mt-5">Introduction</h2>
+        <p>Git is a version control system that allows you to track changes to your code over time. GitHub is a <br />
+            web-based platform that provides hosting for Git repositories and allows you to collaborate with others
+            <br /> on your code.
+        </p>
+
+        <div class="p-3" style="background-color: rgb(26, 26, 26);">
+            <code>git help</code>
+        </div>
+
+        <h2 class="mt-5">Getting Started</h2>
+        <ol>
+            <li>Install <a href="https://git-scm.com/downloads"> Git</a> on your computer.</li>
+            <li>Create a <a href="https://github.com/">GitHub</a> account.</li>
+            <li>Create a new repository on GitHub.</li>
+            <li>Clone the repository to your local machine using the command line.</li>
+        </ol>
+
+
+        <div class="p-3" style="background-color: rgb(26, 26, 26);">
+            <code>git clone &lt;repository-url&gt;</code>
+        </div>
+
+
+
+        <h2 class="mt-5">Basic Commands</h2>
+        <ul>
+            <li><code>git init</code>: Initializes a new Git repository.</li>
+            <li><code>git add</code>: Adds changes to the staging area.</li>
+            <li><code>git commit</code>: Commits changes to the repository.</li>
+            <li><code>git push</code>: Pushes changes to the remote repository on GitHub.</li>
+            <li><code>git pull</code>: Pulls changes from the remote repository on GitHub.</li>
+        </ul>
+
+        <h2 class="mt-5">Branching and Merging</h2>
+        <p>Git allows you to create branches to work on new features or bug fixes without affecting the main codebase.
+            You can
+            then merge your changes back into the main branch when you're ready.</p>
+
+        <h2 class="mt-5">Collaboration</h2>
+        <p>GitHub allows you to collaborate with others on your code by creating pull requests, reviewing code, and
+            merging
+            changes.</p>
+
+        <h2 class="mt-5">Lets look inside the .git folder</h2>
+
+        <div class="container">
+            <h2 class="mt-5">Inside the .git Folder</h2>
+            <p>The `.git` folder is a hidden folder that is created when you initialize a Git repository in a directory.
+                It contains all of the information and metadata that Git uses to manage your repository, including the
+                commit history, branches, tags, and configuration settings.</p>
+            <p>Here's a brief overview of some of the files and directories you might find inside the `.git` folder:</p>
+            <ul>
+                <li><code>HEAD</code>: A file that points to the current branch or commit.</li>
+                <li><code>objects</code>: A directory that contains all of the Git objects (commits, trees, and blobs)
+                    that make up your repository.</li>
+                <li><code>refs</code>: A directory that contains references to commits, branches, and tags.</li>
+                <li><code>config</code>: A file that contains the configuration settings for your repository.</li>
+                <li><code>hooks</code>: A directory that contains scripts that can be run before or after certain Git
+                    commands.</li>
+                <li><code>index</code>: A file that contains the current state of the staging area.</li>
+                <li><code>logs</code>: A directory that contains logs of all Git activity in your repository.</li>
+            </ul>
+            <p>It's generally not recommended to modify the contents of the `.git` folder directly, as this can cause
+                issues with your repository. Instead, you should use Git commands to manage your repository.</p>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="https://about.gitlab.com/">
+                        <h2 class="mt-5">GitLab</h2>
+                    </a>
+                    <p>GitLab is a web-based Git repository manager that provides source code management, continuous
+                        integration, and other features for software development teams.</p>
+                    <p>Here are some key features of GitLab:</p>
+                    <ul>
+                        <li>Git repository management with support for Git LFS (Large File Storage).</li>
+                        <li>Continuous integration and continuous deployment (CI/CD) pipelines.</li>
+                        <li>Issue tracking and project management tools.</li>
+                        <li>Wiki and documentation support.</li>
+                        <li>Code review and collaboration tools.</li>
+                        <li>Integration with other tools and services, such as Slack and Jira.</li>
+                    </ul>
+                    <p>GitLab is available in both a cloud-hosted version and a self-hosted version that you can install
+                        on your own servers. The self-hosted version is open source and free to use, while the
+                        cloud-hosted version offers additional features and support for a fee.</p>
+                </div>
+                <div class="col-md-6">
+                    <img style="width: 100%" src="https://about.gitlab.com/nuxt-images/open-graph/open-graph-gitlab.png" alt="GitLab logo">
+                </div>
+            </div>
+        </div>
+
+
+        <h2 class="mt-5">Extra Stuff on adi's bucket list</h2>
+
+        <a href="https://about.gitlab.com/blog/2020/04/07/15-git-tips-improve-workflow/">15 tips for more advance members to read into</a> <br />
+        <a href="https://github.com/gitleaks/gitleaks">gitleaks</a> or <a href="https://github.com/awslabs/git-secrets">git secrets</a>
+
+        <div class="container">
+            <h2 class="mt-5"><a href="https://git-scm.com/docs/git-bisect">Git Bisect</a></h2>
+            <p><code>git bisect</code> is a command in Git that allows you to perform a binary search through the
+                commit
+                history of a repository to find the commit that introduced a bug or regression.</p>
+            <p>The command works by allowing you to mark a known "good" commit and a known "bad" commit, and then
+                automatically checking out a middle commit between the two for you to test. Based on your testing,
+                you
+                can then mark the commit as either "good" or "bad", and <code>git bisect</code> will continue to
+                check
+                out middle commits until it finds the commit that introduced the bug.</p>
+            <p><code>git bisect</code> is a powerful tool for debugging and finding regressions in your code. It can
+                save you a lot of time and effort compared to manually searching through the commit history.</p>
+        </div>
+
+        <div class="container">
+            <h2 class="mt-5">Git Log</h2>
+            <p><code>git log</code> is a command in Git that shows the commit history of the current repository. By
+                default, it shows the commit hash, author, date, and commit message for each commit in reverse
+                chronological order (i.e., newest commits first).</p>
+            <p>Here are some common options for <code>git log</code>:</p>
+            <ul>
+                <li><code>--oneline</code>: Shows each commit on a single line with the commit hash and message.
+                </li>
+                <li><code>--graph</code>: Shows a graph of the commit history with branches and merges.</li>
+                <li><code>--author</code>: Filters the commit history by author.</li>
+                <li><code>--since</code>: Filters the commit history by date.</li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <h2 class="mt-5">Git Checkout</h2>
+            <p><code>git checkout</code> is a command in Git that allows you to switch to a different branch or
+                commit.
+                It can also be used to create a new branch.</p>
+            <p>Here are some common use cases for <code>git checkout</code>:</p>
+            <ul>
+                <li><code>git checkout &lt;branch&gt;</code>: Switches to the specified branch.</li>
+                <li><code>git checkout -b &lt;new-branch&gt;</code>: Creates a new branch and switches to it.</li>
+                <li><code>git checkout &lt;commit&gt;</code>: Checks out the specified commit, detaching the HEAD
+                    from
+                    any branch.</li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <h2 class="mt-5">Git Status</h2>
+            <p><code>git status</code> is a command in Git that shows the status of the current repository. It shows
+                which files have been modified, which files are staged for commit, and which files are untracked.
+            </p>
+            <p>Here are some common use cases for <code>git status</code>:</p>
+            <ul>
+                <li><code>git status</code>: Shows the status of the current repository.</li>
+                <li><code>git status -s</code>: Shows a short summary of the status with abbreviated status codes.
+                </li>
+                <li><code>git status --ignored</code>: Shows ignored files in addition to the regular status.</li>
+            </ul>
+        </div>
+
+
+
+        <h2 class="mt-5">Conclusion</h2>
+        <p>Git and GitHub are powerful tools for managing your code and collaborating with others. With a basic
+            understanding
+            of Git and GitHub, you can start using these tools to improve your workflow and productivity.</p>
+    </div>
+    <br /><br /><br /><br />
+
+</body>
+
+</html>
