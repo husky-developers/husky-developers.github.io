@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-doc">
 
 <head>
     <meta charset="UTF-8">
@@ -32,7 +32,7 @@
 
 </head>
 
-<body style="overflow-y: hidden;">
+<body id="body" style="overflow-y: hidden;">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #000000;" id="navbar-page">
         <div class="container px-4">
@@ -91,6 +91,24 @@
         </div>
     </nav>
 
+    <!-- Dark Mode -->
+    <script>
+        let darkmode = false;
+
+        function toggleDarkMode() {
+            if (darkmode) {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "dark");
+                document.getElementById("body").style.backgroundColor = "#000000";
+
+            } else {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "light");
+                document.getElementById("body").style.backgroundColor = "#efefef";
+
+            }
+            darkmode = !darkmode;
+        }
+    </script>
+
     <canvas id="myCanvas"></canvas>
 
     <script>
@@ -143,7 +161,8 @@
             }
         }
     </script>
-    <div class="page-content" style="color: lightgrey; font-family: 'Source Code Pro', monospace; position: absolute; top: 0">
+    <div class="page-content"
+        style="color: lightgrey; font-family: 'Source Code Pro', monospace; position: absolute; top: 0">
         <div class="container">
             <div class="docs-overview py-5">
                 <div class="row justify-content-center">
@@ -186,13 +205,11 @@
                                     <span class="theme-icon-holder card-icon-holder me-2">
                                         <i class="fas fa-box fa-fw"></i>
                                     </span><!--//card-icon-holder-->
-                                    <span class="card-title-text">git_and_GitHub.html</span>
+                                    <a href="git_github.html"><span
+                                            class="card-title-text">git_and_GitHub.html</span></a>
                                 </h5>
                                 <div class="card-text">
-                                    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis,
-                                    feugiat a,
-                                    tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
-                                    imperdiet.
+                                    yes
                                 </div>
                                 <a class="card-link-mask" href="docs-page.html#section-3"></a>
                             </div><!--//card-body-->
