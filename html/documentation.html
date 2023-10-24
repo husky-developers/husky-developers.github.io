@@ -27,6 +27,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
 
+
+
+    <!-- qr code -->
+    <script src="https://cdn.jsdelivr.net/npm/easyqrcodejs@4.5.0/dist/easy.qrcode.min.js"
+        integrity="sha256-SahzOoHdiKC0gaICzwzC5oCvmDklIhMNs3TS6oBluww=" crossorigin="anonymous"></script>
+
+
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../styles.css" />
 
@@ -169,14 +177,13 @@
                     <div class="col-12 col-lg-4 py-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title mb-3">
-                                    <span class="theme-icon-holder card-icon-holder me-2">
-                                        <i class="fas fa-map-signs"></i>
-                                    </span><!--//card-icon-holder-->
-                                    <span class="card-title-text">set_up.html</span>
-                                </h5>
+                                <a href="setup.html" style="display: block; text-decoration: none;">
+                                    <h4 class="card-title mb-3" style="font-weight: 900;">
+                                        set_up.html</h4>
+                                </a>
                                 <div class="card-text">
-                                    Node<br />Git<br />VS Code<br />GitHub<br />GitHub Education
+                                    This is the list of all the stuff you need to install to get started with our first
+                                    meeting
                                 </div>
                                 <a class="card-link-mask" href="docs-page.html#section-1"></a>
                             </div><!--//card-body-->
@@ -184,32 +191,29 @@
                     </div><!--//col-->
                     <div class="col-12 col-lg-4 py-3">
                         <div class="card shadow-sm">
-                            <a href="./personal_website.html" style="display: block; text-decoration: none;">
-                                <div class="card-body">
+                            <div class="card-body">
+                                <a href="./personal_website.html" style="display: block; text-decoration: none;">
                                     <h4 class="card-title mb-3" style="font-weight: 900;">
                                         personal_website.html
                                     </h4>
-                                    <div class="card-text">
-                                        learning a bit of HTML, git, and GitHub<br /><br />
-                                        Hosting on GitHub Pages for FREE
-                                    </div>
-                                    <a class="card-link-mask" href="docs-page.html#section-2"></a>
-                                </div><!--//card-body-->
-                            </a>
+                                </a>
+                                <div class="card-text">
+                                    learning a bit of HTML, git, and GitHub<br /><br />
+                                    Hosting on GitHub Pages for FREE
+                                </div>
+                                <a class="card-link-mask" href="docs-page.html#section-2"></a>
+                            </div><!--//card-body-->
                         </div><!--//card-->
                     </div><!--//col-->
                     <div class="col-12 col-lg-4 py-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title mb-3">
-                                    <span class="theme-icon-holder card-icon-holder me-2">
-                                        <i class="fas fa-box fa-fw"></i>
-                                    </span><!--//card-icon-holder-->
-                                    <a href="git_github.html"><span
-                                            class="card-title-text">git_and_GitHub.html</span></a>
-                                </h5>
+                                <a href="git_github.html" style="display: block; text-decoration: none;">
+                                    <h4 class="card-title mb-3" style="font-weight: 900;">
+                                        git_and_GitHub.html</h4>
+                                </a>
                                 <div class="card-text">
-                                    yes
+                                    This is the technology that developers use to save, share, and collaborate on code.
                                 </div>
                                 <a class="card-link-mask" href="docs-page.html#section-3"></a>
                             </div><!--//card-body-->
@@ -218,22 +222,65 @@
                     <div class="col-12 col-lg-4 py-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
-                                <h5 class="card-title mb-3">
-                                    <span class="theme-icon-holder card-icon-holder me-2">
-                                        <i class="fas fa-cogs fa-fw"></i>
-                                    </span><!--//card-icon-holder-->
-                                    <span class="card-title-text"><a href="html_js_vscode.html">HTML_CSS_VScode_crashcourse.html</a></span>
-                                </h5>
+                                <a href="html_js_vscode.html" style="display: block; text-decoration: none;">
+                                    <h4 class="card-title mb-3" style="font-weight: 900;">
+                                        shortcuts.html</h4>
+                                </a>
                                 <div class="card-text">
-                                    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis,
-                                    feugiat a,
-                                    tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
-                                    imperdiet.
+                                    The best way to learn something is to throw yourself at it blindly. Today I tried
+                                    coding this html without mouse or trackpad. I relied only on keyboard, shortcuts,
+                                    and wits. <br /><br />If you want to learn more shortcuts then Force yourself into a
+                                    situation to
+                                    learn them well like this</b>
                                 </div>
                                 <a class="card-link-mask" href="docs-page.html#section-4"></a>
                             </div><!--//card-body-->
                         </div><!--//card-->
                     </div><!--//col-->
+
+                    <div class="col-12 col-lg-4 py-3">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">
+                                    <span class="theme-icon-holder card-icon-holder me-2">
+                                        <i class="fas fa-book-reader"></i>
+                                    </span><!--//card-icon-holder-->
+                                    <span class="card-title-text"><button class="btn btn-primary"
+                                            onclick="toggleQRCode()">
+                                            <span class="me-2">
+                                                <i class="fas fa-qrcode"></i>
+                                            </span>
+                                            Toggle QR Code
+                                        </button></span>
+                                </h5>
+                                <script>function toggleQRCode() {
+                                        var qrcode = document.getElementById('qrcode');
+                                        var qrcodecontainer = document.getElementById('qrcodecontainer');
+                                        qrcode.style.display = (qrcode.style.display === 'none') ? 'block' : 'none';
+                                        qrcodecontainer.style.display = (qrcode.style.display === 'none') ? 'none' : 'block';
+                                    }</script>
+                                <div class="card-text">
+
+
+                                    <div id="qrcodecontainer" style="display: none">
+                                        <div id="qrcode" style="display: none;"></div>
+                                    </div>
+
+                                    <script type="text/javascript">
+                                        // Options
+                                        var options = {
+                                            text: "https://husky-developers.github.io/"
+                                        };
+
+                                        // Create QRCode Object
+                                        new QRCode(document.getElementById("qrcode"), options);
+                                    </script>
+                                </div>
+                                <a class="card-link-mask" href="docs-page.html#section-8"></a>
+                            </div><!--//card-body-->
+                        </div><!--//card-->
+                    </div><!--//col-->
+
                     <div class="col-12 col-lg-4 py-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
@@ -244,10 +291,7 @@
                                     <span class="card-title-text">intro_to_ReactNative&_Expo.html</span>
                                 </h5>
                                 <div class="card-text">
-                                    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis,
-                                    feugiat a,
-                                    tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
-                                    imperdiet.
+                                    Coming soon
                                 </div>
                                 <a class="card-link-mask" href="docs-page.html#section-5"></a>
                             </div><!--//card-body-->
@@ -263,10 +307,7 @@
                                     <span class="card-title-text">intro_to_Databases.html</span>
                                 </h5>
                                 <div class="card-text">
-                                    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis,
-                                    feugiat a,
-                                    tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
-                                    imperdiet.
+                                    Coming soon
                                 </div>
                                 <a class="card-link-mask" href="docs-page.html#section-6"></a>
                             </div><!--//card-body-->
@@ -282,10 +323,7 @@
                                     <span class="card-title-text">undecided</span>
                                 </h5>
                                 <div class="card-text">
-                                    Section overview goes here. Aliquam lorem ante, dapibus in, viverra quis,
-                                    feugiat a,
-                                    tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean
-                                    imperdiet.
+                                    Coming soon
                                 </div>
                                 <a class="card-link-mask" href="docs-page.html#section-7"></a>
                             </div><!--//card-body-->
@@ -307,6 +345,8 @@
                             </div><!--//card-body-->
                         </div><!--//card-->
                     </div><!--//col-->
+
+
                     <div class="col-12 col-lg-4 py-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
