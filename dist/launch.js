@@ -11,14 +11,14 @@ const scene = new THREE.Scene();
 const gltfLoader = new GLTFLoader();
 
 var env;
-gltfLoader.load("assets/EnvironmentLaunchRoom.glb", function (glb) {
+gltfLoader.load("assets/3D_objects/EnvironmentLaunchRoom.glb", function (glb) {
   env = glb.scene;
   env.position.set(0, 0, 0);
   scene.add(env);
 });
 
 var roc;
-gltfLoader.load("assets/Rocket.glb", function (glb) {
+gltfLoader.load("assets/3D_objects/Rocket.glb", function (glb) {
   console.log(glb);
   roc = glb.scene;
   roc.position.set(0, 0, 0);
@@ -26,7 +26,7 @@ gltfLoader.load("assets/Rocket.glb", function (glb) {
 });
 
 var roc_ho;
-gltfLoader.load("assets/Rocket_Holder.glb", function (glb) {
+gltfLoader.load("assets/3D_objects/Rocket_Holder.glb", function (glb) {
   console.log(glb);
   roc_ho = glb.scene;
   roc_ho.position.set(0, 0, 0);
@@ -34,7 +34,7 @@ gltfLoader.load("assets/Rocket_Holder.glb", function (glb) {
 });
 
 var button;
-gltfLoader.load("assets/LaunchButton.glb", function (glb) {
+gltfLoader.load("assets/3D_objects/LaunchButton.glb", function (glb) {
   console.log(glb);
   button = glb.scene;
   button.position.set(0, 0, 0);
@@ -60,7 +60,6 @@ scene.add(spotLight2.target);
 const spotLight3 = new THREE.SpotLight(0xffe6ba, 5, 0, Math.PI / 2, 1.75);
 spotLight3.position.set(0, 10, 0);
 scene.add(spotLight3);
-
 
 const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
 directionalLight2.position.set(
@@ -147,7 +146,7 @@ function isFar(particle) {
 
 function createParticleInitial(a, b) {
   let particle;
-  gltfLoader.load("assets/small_smoke.glb", function (glb) {
+  gltfLoader.load("assets/3D_objects/small_smoke.glb", function (glb) {
     particle = glb.scene;
     particle.scale.set(2, 2, 2);
     particle.position.set(
@@ -208,7 +207,7 @@ function moveParticlesInitial() {
 
 function createParticleAfter(a, b) {
   let particle;
-  gltfLoader.load("assets/small_smoke.glb", function (glb) {
+  gltfLoader.load("assets/3D_objects/small_smoke.glb", function (glb) {
     particle = glb.scene;
     particle.scale.set(2, 3, 2);
     particle.position.set(
@@ -254,7 +253,6 @@ function moveParticlesAfter() {
       currentScale.z * newscale
     );
   }
-
   for (let i = 0; i < smoke.length; i++) {
     let particle = smoke[i];
 
@@ -388,7 +386,6 @@ function animate() {
     if (j > 375 && j < 1250) {
       expandSmoke(j);
       shakeCamera(j);
-
     } else if (j == 1250) {
       // stop everything
       renderer.setAnimationLoop(null);
