@@ -1,7 +1,7 @@
 <!-- FILEPATH: /c:/personal_projects/husky_developers/husky-developers.github.io/dist/html/setup.html -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-doc">
 
 <head>
     <meta charset="UTF-8">
@@ -35,8 +35,83 @@
 
 </head>
 
-<body>
-    <div class="container" style="color: white; padding: 30px">
+<body id="body" style="color: gray">
+    <nav class="navbar navbar-expand-lg fixed-bottom" style="background-color: #000000;" id="navbar-page">
+        <div class="container px-4">
+
+            <!-- Navbar Title-->
+            <a href="../" style="display: block;">
+                <img src="../assets/images/logos/title.jpg" style="height: 35px; padding-right: 20px;">
+            </a>
+
+            <!-- Navbar Toggler-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+
+            <!-- Navbar Links-->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="https://discord.gg/f8bgHjehb7">
+                            Discord
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="https://www.instagram.com/huskydevelopers/">
+                            Instagram
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="https://uconntact.uconn.edu/organization/huskydevelopers">
+                            UConntact
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: lightgrey; font-family: 'Source Code Pro', monospace;"
+                            href="../html/documentation.html">
+                            Documentation
+                        </a>
+                    </li>
+
+                    <!-- darkmode -->
+                    <li class="nav-item">&nbsp;&nbsp;
+                        <button class="btn btn-outline-secondary" onclick="toggleDarkMode()">
+                            <i class="ri-sun-line"></i>
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dark Mode -->
+    <script>
+        let darkmode = false;
+
+        function toggleDarkMode() {
+            if (darkmode) {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "dark");
+                document.getElementById("body").style.backgroundColor = "#000000";
+
+            } else {
+                document.getElementById("html-doc").setAttribute("data-bs-theme", "light");
+                document.getElementById("body").style.backgroundColor = "#efefef";
+
+            }
+            darkmode = !darkmode;
+        }
+    </script>
+
+    <div class="container" style="padding: 30px">
         <h1>Club Setup</h1>
         <p>Welcome to our club! To get started, please follow the instructions below to install the necessary tools:</p>
         <ul>
@@ -45,7 +120,7 @@
             <li>Git: <a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Download</a></li>
             <li>VS Code: <a href="https://code.visualstudio.com/download" target="_blank"
                     rel="noopener noreferrer">Download</a></li>
-            <li>GitHub: <a href="https://github.com/" target="_blank" rel="noopener noreferrer">Download</a>
+            <li>GitHub: <a href="https://github.com/" target="_blank" rel="noopener noreferrer">Sign up</a>
             </li>
             <li>GitHub Education: <a href="https://education.github.com/pack/join" target="_blank"
                     rel="noopener noreferrer">Apply</a></li>
