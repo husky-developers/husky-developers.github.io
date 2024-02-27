@@ -164,7 +164,8 @@
     <canvas class="webgl"></canvas>
     <script type="module" src="launch.js"></script>
 
-    <p id="countdown" style="font-family: 'Source Code Pro', monospace;position: absolute; top: 10px; right: 10px;">T-00:00:07</p>
+    <p id="countdown" style="font-family: 'Source Code Pro', monospace;position: absolute; top: 10px; right: 10px;">
+        T-00:00:07</p>
     <script>
         var countdownElement = document.getElementById('countdown');
         var countdownTime = 7; // Countdown time in seconds
@@ -291,43 +292,6 @@
             <div class="row" data-masonry='{"percentPosition": true }'
                 style="font-family: 'Source Code Pro', monospace; font-size:12px">
 
-                <!-- goaltac -->
-                <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="card" style="background-color:#ffffff">
-
-                        <!-- Hamburger Menu -->
-                        <div class="menu-icon" onclick="toggleVisibility('goaltac')"
-                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
-                            <div style=" width: 24px;height: 3px;background-color: #000000;"></div>
-                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
-                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
-                        </div>
-
-                        <!-- Hidden info -->
-                        <div id="hidden-goaltac" style="display: none; padding: 15px">
-                            Project Lead: My Phung<br />
-                            Second in Command: Nikhil Ghosh & Aditya Chandraker
-                        </div>
-
-                        <!-- Visible info (Default) -->
-                        <div id="hide-goaltac">
-
-                            <!-- Top image -->
-                            <img class="bd-placeholder-img card-img-top" src="assets/images/logos/goaltac.jpg"
-                                alt="Goaltac Logo" style="cursor: pointer;"
-                                onclick='window.open("https://goaltac.net")' />
-
-                            <!-- Description -->
-                            <div class="card-body" style="color:#000000">
-                                <h5 class="card-title">Goaltac</h5>
-                                <p>A social media platform that help people set goals and complete them.</p>
-                                <p>Node.js&nbsp;&nbsp;React&nbsp;&nbsp;Supabase&nbsp;&nbsp;ChakraUI</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
                 <!-- qena -->
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card" style="background-color:#000000;">
@@ -419,6 +383,35 @@
                     </div>
                 </div>
 
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card" style="background-color:#ffffff">
+
+                        <div class="menu-icon" onclick="toggleVisibility('goaltac')"
+                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
+                            <div style=" width: 24px;height: 3px;background-color: #000000;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
+                        </div>
+
+                        <div id="hidden-goaltac" style="display: none; padding: 15px">
+                            Adi &nbsp; Priyanshi</div>
+
+                        <div id="hide-goaltac">
+
+                            <img class="bd-placeholder-img card-img-top" src="assets/images/logos/dancepoint.png"
+                                alt="Goaltac Logo" style="cursor: pointer;"
+                                onclick='window.open("https://dancepoint.github.io")' />
+
+                            <div class="card-body" style="color:#000000">
+                                <h5 class="card-title">Dancepoint</h5>
+                                <p>A game that gets people moving</p>
+                                <p>Node.js&nbsp;&nbsp;React Native&nbsp;&nbsp;Supabase&nbsp;&nbsp;Expo</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
                 <!-- outfit insiders -->
                 <div class="col-sm-6 col-lg-4 mb-4">
                     <div class="card" style="background-color: #ffffff;">
@@ -431,8 +424,9 @@
                         </div>
 
                         <div id="hidden-fitcheck" style="display: none; padding: 15px">
-                            Project Lead: Laura Braddick & Gianna Rivera<br />
+                            Laura Braddick<br />
                             Aditya Chandraker
+                            Evan
                         </div>
 
                         <div id="hide-fitcheck">
@@ -531,6 +525,37 @@
                             onclick='window.open("https://www.business.uconn.edu/2023/02/21/otis-innovation-hackathon-prompts-undergrads-to-leverage-emerging-tech/")'>
                     </div>
 
+                </div>
+
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card" style="background-color:#ffffff">
+
+                        <div class="menu-icon" onclick="toggleVisibility('goaltac')"
+                            style="position: absolute; top: 10px;right: 10px;display: flex;flex-direction: column;justify-content: space-between;height: 30px;cursor: pointer;z-index: 1;padding: 5px;">
+                            <div style=" width: 24px;height: 3px;background-color: #000000;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
+                            <div style="width: 24px;height: 3px;background-color: #000000;"></div>
+                        </div>
+
+                        <div id="hidden-goaltac" style="display: none; padding: 15px">
+                            Project Lead: My Phung<br />
+                            Second in Command: Nikhil Ghosh & Aditya Chandraker
+                        </div>
+
+                        <div id="hide-goaltac">
+
+                            <img class="bd-placeholder-img card-img-top" src="assets/images/logos/goaltac.jpg"
+                                alt="Goaltac Logo" style="cursor: pointer;"
+                                onclick='window.open("https://goaltac.net")' />
+
+                            <div class="card-body" style="color:#000000">
+                                <h5 class="card-title">Goaltac</h5>
+                                <p>A social media platform that help people set goals and complete them.</p>
+                                <p>Node.js&nbsp;&nbsp;React&nbsp;&nbsp;Supabase&nbsp;&nbsp;ChakraUI</p>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
             </div>
